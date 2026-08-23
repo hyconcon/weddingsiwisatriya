@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wedding Siwi & Satriya</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="font-family: Arial; text-align:center; padding:50px;">
+
+<h1>💍 The Wedding Of</h1>
+
+<h2>Siwi & Satriya</h2>
+
+<p>28 Desember 2026</p>
+
+<p id="guest"></p>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const guest = params.get('to');
+
+if (guest) {
+  document.getElementById('guest').innerHTML =
+    'Kepada Yth. <b>' + guest + '</b>';
+}
+</script>
+
+</body>
+</html>
