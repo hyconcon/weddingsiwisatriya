@@ -1,43 +1,30 @@
-// Nama Tamu
 const params = new URLSearchParams(window.location.search);
+
 const guest = params.get("to");
 
-if(guest){
-document.getElementById("guestName").innerHTML = guest;
+if (guest) {
+  document.getElementById("guest").innerHTML = guest;
 }
 
-// Countdown
-const weddingDate = new Date("December 28, 2026 10:00:00").getTime();
+const target =
+new Date("December 28, 2026 10:00:00").getTime();
 
 setInterval(() => {
 
 const now = new Date().getTime();
 
-const distance = weddingDate - now;
+const distance = target - now;
 
-const days = Math.floor(distance / (1000*60*60*24));
+document.getElementById("days").innerHTML =
+Math.floor(distance / (1000*60*60*24));
 
-const hours = Math.floor(
-(distance % (1000*60*60*24))
-/
-(1000*60*60)
-);
+document.getElementById("hours").innerHTML =
+Math.floor((distance%(1000*60*60*24))/(1000*60*60));
 
-const minutes = Math.floor(
-(distance % (1000*60*60))
-/
-(1000*60)
-);
+document.getElementById("minutes").innerHTML =
+Math.floor((distance%(1000*60*60))/(1000*60));
 
-const seconds = Math.floor(
-(distance % (1000*60))
-/
-1000
-);
-
-document.getElementById("days").innerHTML = days;
-document.getElementById("hours").innerHTML = hours;
-document.getElementById("minutes").innerHTML = minutes;
-document.getElementById("seconds").innerHTML = seconds;
+document.getElementById("seconds").innerHTML =
+Math.floor((distance%(1000*60))/1000);
 
 },1000);
