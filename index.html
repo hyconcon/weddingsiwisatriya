@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>The Wedding Of Siwi & Satriya</title>
+<title>The Wedding Of Siwi & Satriya</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- COVER -->
+<!-- HERO -->
 <section class="hero">
 
     <img src="images/cover.jpg" class="hero-bg" alt="Cover">
@@ -21,11 +20,11 @@
 
     <div class="hero-content">
 
-        <p class="small-title">THE WEDDING OF</p>
+        <p class="pre-title">THE WEDDING OF</p>
 
         <h1>Siwi & Satriya</h1>
 
-        <p class="date">
+        <p class="hero-date">
             28 Desember 2026
         </p>
 
@@ -34,7 +33,7 @@
             <h3 id="guest">Tamu Undangan</h3>
         </div>
 
-        <a href="#home" class="btn-open">
+        <a href="#home" class="btn-primary">
             Buka Undangan
         </a>
 
@@ -43,136 +42,124 @@
 </section>
 
 <!-- CONTENT -->
-<section id="home" class="content">
+<main id="home">
 
     <!-- FOTO -->
-    <div class="intro">
+    <section class="intro">
 
         <img src="images/couple-main.jpg"
              class="main-photo"
              alt="Siwi dan Satriya">
 
-    </div>
+    </section>
 
     <!-- AYAT -->
-    <div class="verse">
+    <section class="verse">
 
-        <h4>Firman Tuhan</h4>
-
-        <p>
-            "Sehati sepikirlah kamu, dan hiduplah
-            dalam damai sejahtera; maka Allah,
-            sumber kasih dan damai sejahtera
-            akan menyertai kamu."
-        </p>
-
-        <span>
-            2 Korintus 13:11b
+        <span class="verse-label">
+            Firman Tuhan
         </span>
 
-    </div>
+        <p class="verse-text">
+            "Sehati sepikirlah kamu,
+            dan hiduplah dalam damai sejahtera;
+            maka Allah, sumber kasih dan damai
+            sejahtera akan menyertai kamu."
+        </p>
+
+        <small>
+            2 Korintus 13:11b
+        </small>
+
+    </section>
 
     <!-- MEMPELAI -->
-    <div class="couple-section">
+    <section id="couple" class="section">
 
-        <h2 class="section-heading">
+        <h2 class="section-title">
             Mempelai
         </h2>
 
         <div class="person">
+
+            <img src="images/siwi.jpg"
+                 class="person-photo"
+                 alt="Siwi">
 
             <h3>
                 Margareta Septa Prima Siwi
             </h3>
 
             <p>
-                Putri dari
-                <br>
+                Putri dari<br>
                 Bapak Wasikin &
                 Ibu Kristiyaningsih
             </p>
 
         </div>
 
-        <div class="ampersand">
-            &
-        </div>
+        <div class="ampersand">&</div>
 
         <div class="person">
+
+            <img src="images/satriya.jpg"
+                 class="person-photo"
+                 alt="Satriya">
 
             <h3>
                 Ignatius Satriya Bagus Pradana
             </h3>
 
             <p>
-                Putra dari
-                <br>
+                Putra dari<br>
                 Bapak Arinto Subandoko Vinc &
                 Ibu Theresia Maria Dwi Aryani
             </p>
 
         </div>
 
-    </div>
+    </section>
 
     <!-- SAVE THE DATE -->
-    <div class="save-date">
+    <section id="event" class="section">
 
-        <h2 class="section-heading">
+        <h2 class="section-title">
             Save The Date
         </h2>
 
         <div class="countdown">
 
-            <div class="box">
+            <div class="count-box">
                 <span id="days">0</span>
                 <small>Hari</small>
             </div>
 
-            <div class="box">
+            <div class="count-box">
                 <span id="hours">0</span>
                 <small>Jam</small>
             </div>
 
-            <div class="box">
+            <div class="count-box">
                 <span id="minutes">0</span>
                 <small>Menit</small>
             </div>
 
-            <div class="box">
+            <div class="count-box">
                 <span id="seconds">0</span>
                 <small>Detik</small>
             </div>
 
         </div>
 
-    </div>
-
-    <!-- ACARA -->
-    <div class="event-section">
-
-        <h2 class="section-heading">
-            Detail Acara
-        </h2>
-
-        <div class="event">
+        <div class="event-grid">
 
             <div class="event-card">
 
                 <h3>Pemberkatan</h3>
 
-                <p>
-                    Senin, 28 Desember 2026
-                </p>
-
-                <p>
-                    10.00 WIB
-                </p>
-
-                <p>
-                    Gereja Santo Yusup
-                    Ambarawa
-                </p>
+                <p>Senin, 28 Desember 2026</p>
+                <p>10.00 WIB</p>
+                <p>Gereja Santo Yusup Ambarawa</p>
 
             </div>
 
@@ -180,46 +167,40 @@
 
                 <h3>Resepsi</h3>
 
-                <p>
-                    Senin, 28 Desember 2026
-                </p>
-
-                <p>
-                    13.00 WIB
-                </p>
-
-                <p>
-                    Jl. Gunung Payung No.49A
-                    Salatiga
-                </p>
+                <p>Senin, 28 Desember 2026</p>
+                <p>13.00 WIB</p>
+                <p>Jl. Gunung Payung No.49A, Salatiga</p>
 
             </div>
 
         </div>
 
-    </div>
+    </section>
 
     <!-- GALERI -->
-    <div class="gallery-section">
+    <section id="gallery" class="section">
 
-        <h2 class="section-heading">
+        <h2 class="section-title">
             Our Gallery
         </h2>
 
         <div class="gallery">
 
-            <img src="images/photo1.jpg" alt="">
-            <img src="images/photo2.jpg" alt="">
-            <img src="images/photo3.jpg" alt="">
+            <img src="images/photo1.jpg">
+            <img src="images/photo2.jpg">
+            <img src="images/photo3.jpg">
+            <img src="images/photo4.jpg">
+            <img src="images/photo5.jpg">
+            <img src="images/photo6.jpg">
 
         </div>
 
-    </div>
+    </section>
 
     <!-- LOKASI -->
-    <div class="location">
+    <section id="location" class="section">
 
-        <h2 class="section-heading">
+        <h2 class="section-title">
             Lokasi Acara
         </h2>
 
@@ -229,39 +210,28 @@
 
         <a href="https://maps.google.com"
            target="_blank"
-           class="btn-map">
+           class="btn-dark">
 
            Buka Google Maps
 
         </a>
 
-    </div>
+    </section>
 
-</section>
+</main>
 
 <!-- BOTTOM NAV -->
-<div class="bottom-nav">
+<nav class="bottom-nav">
 
     <a href="#home">Home</a>
+    <a href="#couple">Mempelai</a>
+    <a href="#event">Acara</a>
+    <a href="#gallery">Galeri</a>
+    <a href="#location">Lokasi</a>
 
-    <a href="#couple">
-        Mempelai
-    </a>
-
-    <a href="#event">
-        Acara
-    </a>
-
-    <a href="#gallery">
-        Galeri
-    </a>
-
-    <a href="#location">
-        Lokasi
-    </a>
-
-</div>
+</nav>
 
 <script src="script.js"></script>
 
 </body>
+</html>
