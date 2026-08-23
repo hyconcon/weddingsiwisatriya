@@ -1,29 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Wedding Siwi & Satriya</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Wedding Siwi & Satriya</title>
+
+  <link rel="stylesheet" href="style.css">
 </head>
-<body style="font-family: Arial; text-align:center; padding:50px;">
 
-<h1>💍 The Wedding Of</h1>
+<body>
 
-<h2>Siwi & Satriya</h2>
+  <h1>💍 The Wedding Of</h1>
 
-<p>28 Desember 2026</p>
+  <h2>Siwi & Satriya</h2>
 
-<p id="guest"></p>
+  <p>28 Desember 2026</p>
 
-<script>
-const params = new URLSearchParams(window.location.search);
-const guest = params.get('to');
+  <p id="guest"></p>
 
-if (guest) {
-  document.getElementById('guest').innerHTML =
-    'Kepada Yth. <b>' + guest + '</b>';
-}
-</script>
+  <script src="script.js"></script>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const guest = params.get('to');
+
+    if (guest) {
+      document.getElementById('guest').innerHTML =
+        `Kepada Yth. <b>${guest}</b>`;
+    }
+  </script>
 
 </body>
 </html>
