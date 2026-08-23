@@ -177,4 +177,36 @@ font-size:38px;
 min-width:70px;
 }
 
+  /* Mobile Responsive */
+@media screen and (max-width: 768px) {
+
+  .hero {
+    height: 100vh;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .overlay {
+    padding: 20px;
+    width: 90%;
+  }
+
+  .overlay h1 {
+    font-size: 48px;
+    line-height: 1.1;
+  }
+
+  .overlay h2 {
+    font-size: 20px;
+  }
+
+  .overlay p {
+    font-size: 16px;
+  }
+
+  .btn-open {
+    padding: 14px 28px;
+    font-size: 16px;
+  }
+}
 }
