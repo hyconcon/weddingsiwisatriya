@@ -247,4 +247,41 @@ body{
   .content{
     padding:50px 15px;
   }
+.small-title{
+  font-size:22px;
+  letter-spacing:2px;
+}
+
+.event{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:40px;
+}
+
+.event-card{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.1);
+  max-width:400px;
+  width:100%;
+}
+
+.event-card h2{
+  margin-bottom:15px;
+}
+
+.gallery img{
+  transition:.3s;
+}
+
+.gallery img:hover{
+  transform:scale(1.03);
+}
+
+.main-photo{
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
 }
