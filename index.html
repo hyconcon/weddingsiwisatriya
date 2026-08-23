@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,33 +8,43 @@
 <title>The Wedding Of Siwi & Satriya</title>
 
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<!-- HERO -->
-<section class="hero">
+<!-- COVER -->
+<section class="hero" id="home">
 
-    <img src="images/cover.jpg" class="hero-bg" alt="Cover">
+    <img src="images/cover.jpg" class="hero-bg">
 
-    <div class="overlay"></div>
+    <div class="hero-overlay"></div>
 
     <div class="hero-content">
 
-        <p class="pre-title">THE WEDDING OF</p>
+        <p class="hero-small">
+            THE WEDDING OF
+        </p>
 
-        <h1>Siwi & Satriya</h1>
+        <h1>
+            Siwi & Satriya
+        </h1>
 
         <p class="hero-date">
             28 Desember 2026
         </p>
 
         <div class="guest-box">
+
             <small>Kepada Yth.</small>
-            <h3 id="guest">Tamu Undangan</h3>
+
+            <h3 id="guest">
+                Tamu Undangan
+            </h3>
+
         </div>
 
-        <a href="#home" class="btn-primary">
+        <a href="#opening" class="btn-main">
             Buka Undangan
         </a>
 
@@ -41,192 +52,199 @@
 
 </section>
 
-<!-- CONTENT -->
-<main id="home">
+<!-- OPENING -->
+<section class="opening" id="opening">
 
-    <!-- FOTO -->
-    <section class="intro">
+    <img src="images/couple-main.jpg"
+         class="opening-photo">
 
-        <img src="images/couple-main.jpg"
-             class="main-photo"
-             alt="Siwi dan Satriya">
+    <p class="opening-text">
 
-    </section>
+        Dengan penuh syukur kepada Tuhan,
+        kami mengundang Bapak/Ibu/Saudara/i
+        untuk hadir dan memberikan doa restu
+        pada hari bahagia kami.
 
-    <!-- AYAT -->
-    <section class="verse">
+    </p>
 
-        <span class="verse-label">
-            Firman Tuhan
-        </span>
+</section>
 
-        <p class="verse-text">
-            "Sehati sepikirlah kamu,
-            dan hiduplah dalam damai sejahtera;
-            maka Allah, sumber kasih dan damai
-            sejahtera akan menyertai kamu."
+<!-- AYAT -->
+<section class="verse">
+
+    <h4>Firman Tuhan</h4>
+
+    <p>
+
+        "Sehati sepikirlah kamu,
+        dan hiduplah dalam damai sejahtera;
+        maka Allah, sumber kasih dan damai
+        sejahtera akan menyertai kamu."
+
+    </p>
+
+    <span>
+        2 Korintus 13:11b
+    </span>
+
+</section>
+
+<!-- MEMPELAI -->
+<section class="couple" id="couple">
+
+    <h2>Mempelai</h2>
+
+    <div class="person">
+
+        <img src="images/siwi.jpg">
+
+        <h3>
+            Margareta Septa Prima Siwi
+        </h3>
+
+        <p>
+            Putri dari<br>
+            Bapak Wasikin &
+            Ibu Kristiyaningsih
         </p>
 
-        <small>
-            2 Korintus 13:11b
-        </small>
+    </div>
 
-    </section>
+    <div class="and">
+        &
+    </div>
 
-    <!-- MEMPELAI -->
-    <section id="couple" class="section">
+    <div class="person">
 
-        <h2 class="section-title">
-            Mempelai
-        </h2>
+        <img src="images/satriya.jpg">
 
-        <div class="person">
+        <h3>
+            Ignatius Satriya Bagus Pradana
+        </h3>
 
-            <img src="images/siwi.jpg"
-                 class="person-photo"
-                 alt="Siwi">
+        <p>
+            Putra dari<br>
+            Bapak Arinto Subandoko Vinc &
+            Ibu Theresia Maria Dwi Aryani
+        </p>
 
-            <h3>
-                Margareta Septa Prima Siwi
-            </h3>
+    </div>
 
-            <p>
-                Putri dari<br>
-                Bapak Wasikin &
-                Ibu Kristiyaningsih
-            </p>
+</section>
 
+<!-- SAVE THE DATE -->
+<section class="save-date" id="event">
+
+    <h2>Save The Date</h2>
+
+    <div class="countdown">
+
+        <div class="count-box">
+            <span id="days">0</span>
+            <small>Hari</small>
         </div>
 
-        <div class="ampersand">&</div>
-
-        <div class="person">
-
-            <img src="images/satriya.jpg"
-                 class="person-photo"
-                 alt="Satriya">
-
-            <h3>
-                Ignatius Satriya Bagus Pradana
-            </h3>
-
-            <p>
-                Putra dari<br>
-                Bapak Arinto Subandoko Vinc &
-                Ibu Theresia Maria Dwi Aryani
-            </p>
-
+        <div class="count-box">
+            <span id="hours">0</span>
+            <small>Jam</small>
         </div>
 
-    </section>
-
-    <!-- SAVE THE DATE -->
-    <section id="event" class="section">
-
-        <h2 class="section-title">
-            Save The Date
-        </h2>
-
-        <div class="countdown">
-
-            <div class="count-box">
-                <span id="days">0</span>
-                <small>Hari</small>
-            </div>
-
-            <div class="count-box">
-                <span id="hours">0</span>
-                <small>Jam</small>
-            </div>
-
-            <div class="count-box">
-                <span id="minutes">0</span>
-                <small>Menit</small>
-            </div>
-
-            <div class="count-box">
-                <span id="seconds">0</span>
-                <small>Detik</small>
-            </div>
-
+        <div class="count-box">
+            <span id="minutes">0</span>
+            <small>Menit</small>
         </div>
 
-        <div class="event-grid">
-
-            <div class="event-card">
-
-                <h3>Pemberkatan</h3>
-
-                <p>Senin, 28 Desember 2026</p>
-                <p>10.00 WIB</p>
-                <p>Gereja Santo Yusup Ambarawa</p>
-
-            </div>
-
-            <div class="event-card">
-
-                <h3>Resepsi</h3>
-
-                <p>Senin, 28 Desember 2026</p>
-                <p>13.00 WIB</p>
-                <p>Jl. Gunung Payung No.49A, Salatiga</p>
-
-            </div>
-
+        <div class="count-box">
+            <span id="seconds">0</span>
+            <small>Detik</small>
         </div>
 
-    </section>
+    </div>
 
-    <!-- GALERI -->
-    <section id="gallery" class="section">
+</section>
 
-        <h2 class="section-title">
-            Our Gallery
-        </h2>
+<!-- ACARA -->
+<section class="events">
 
-        <div class="gallery">
+    <div class="event-card">
 
-            <img src="images/photo1.jpg">
-            <img src="images/photo2.jpg">
-            <img src="images/photo3.jpg">
-            <img src="images/photo4.jpg">
-            <img src="images/photo5.jpg">
-            <img src="images/photo6.jpg">
+        <h3>Pemberkatan</h3>
 
-        </div>
+        <p>Senin, 28 Desember 2026</p>
 
-    </section>
+        <p>10.00 WIB</p>
 
-    <!-- LOKASI -->
-    <section id="location" class="section">
+        <p>
+            Gereja Santo Yusup
+            Ambarawa
+        </p>
 
-        <h2 class="section-title">
-            Lokasi Acara
-        </h2>
+    </div>
 
-        <img src="images/map.png"
-             class="map"
-             alt="Lokasi">
+    <div class="event-card">
 
-        <a href="https://maps.google.com"
-           target="_blank"
-           class="btn-dark">
+        <h3>Resepsi</h3>
 
-           Buka Google Maps
+        <p>Senin, 28 Desember 2026</p>
 
-        </a>
+        <p>13.00 WIB</p>
 
-    </section>
+        <p>
+            Jl. Gunung Payung No.49A
+            Salatiga
+        </p>
 
-</main>
+    </div>
 
-<!-- BOTTOM NAV -->
+</section>
+
+<!-- GALERI -->
+<section class="gallery-section" id="gallery">
+
+    <h2>Our Gallery</h2>
+
+    <div class="gallery">
+
+        <img src="images/photo1.jpg">
+        <img src="images/photo2.jpg">
+        <img src="images/photo3.jpg">
+        <img src="images/photo4.jpg">
+        <img src="images/photo5.jpg">
+        <img src="images/photo6.jpg">
+
+    </div>
+
+</section>
+
+<!-- MAP -->
+<section class="location" id="location">
+
+    <h2>Lokasi Acara</h2>
+
+    <img src="images/map.png"
+         class="map">
+
+    <a href="https://maps.google.com"
+       target="_blank"
+       class="btn-dark">
+
+        Buka Google Maps
+
+    </a>
+
+</section>
+
+<!-- BOTTOM MENU -->
 <nav class="bottom-nav">
 
     <a href="#home">Home</a>
+
     <a href="#couple">Mempelai</a>
+
     <a href="#event">Acara</a>
+
     <a href="#gallery">Galeri</a>
+
     <a href="#location">Lokasi</a>
 
 </nav>
