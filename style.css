@@ -419,4 +419,39 @@ body{
     .bottom-nav a{
         font-size:12px;
     }
+   .couple-section{
+    max-width:900px;
+    margin:100px auto;
+    text-align:center;
+}
+
+.person{
+    margin-bottom:50px;
+}
+
+.person-photo{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    object-fit:cover;
+    display:block;
+    margin:0 auto 25px;
+    border:6px solid #fff;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+.person h3{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.person p{
+    color:#666;
+}
+
+.ampersand{
+    font-size:70px;
+    margin:40px 0;
+    font-family:Georgia,serif;
+}
 }
