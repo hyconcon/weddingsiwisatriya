@@ -1,35 +1,155 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Wedding Siwi & Satriya</title>
+<title>The Wedding Of Siwi & Satriya</title>
 
-  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <h1>💍 The Wedding Of</h1>
+<!-- COVER -->
+<section class="hero">
+    <img src="images/cover.jpg" class="hero-bg">
 
-  <h2>Siwi & Satriya</h2>
+    <div class="overlay"></div>
 
-  <p>28 Desember 2026</p>
+    <div class="hero-content">
+        <p class="small-text">The Wedding Of</p>
 
-  <p id="guest"></p>
+        <h1>Siwi & Satriya</h1>
 
-  <script src="script.js"></script>
+        <p class="date">28 Desember 2026</p>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const guest = params.get('to');
+        <div class="guest-box">
+            <p>Kepada Yth.</p>
+            <h3 id="guestName">Tamu Undangan</h3>
+        </div>
 
-    if (guest) {
-      document.getElementById('guest').innerHTML =
-        `Kepada Yth. <b>${guest}</b>`;
-    }
-  </script>
+        <a href="#home" class="btn-open">
+            Buka Undangan
+        </a>
+    </div>
+</section>
+
+<!-- CONTENT -->
+<section id="home" class="content">
+
+    <div class="section-title">
+        <h2>The Wedding Of</h2>
+        <h1>Siwi & Satriya</h1>
+    </div>
+
+    <img src="images/couple-main.jpg" class="main-photo">
+
+    <div class="quote">
+        Dengan penuh sukacita kami mengundang
+        Bapak/Ibu/Saudara/i untuk hadir dalam
+        pernikahan kami.
+    </div>
+
+    <div class="couple">
+
+        <div class="person">
+            <h2>Margareta Septa Prima Siwi</h2>
+            <p>
+                Putri dari<br>
+                Bapak Wasikin & Ibu Kristiyaningsih
+            </p>
+        </div>
+
+        <div class="ampersand">&</div>
+
+        <div class="person">
+            <h2>Ignatius Satriya Bagus Pradana</h2>
+            <p>
+                Putra dari<br>
+                Bapak Arinto Subandoko Vinc &
+                Ibu Theresia Maria Dwi Aryani
+            </p>
+        </div>
+
+    </div>
+
+    <!-- COUNTDOWN -->
+    <div class="countdown">
+
+        <div class="box">
+            <span id="days">0</span>
+            <small>Hari</small>
+        </div>
+
+        <div class="box">
+            <span id="hours">0</span>
+            <small>Jam</small>
+        </div>
+
+        <div class="box">
+            <span id="minutes">0</span>
+            <small>Menit</small>
+        </div>
+
+        <div class="box">
+            <span id="seconds">0</span>
+            <small>Detik</small>
+        </div>
+
+    </div>
+
+    <!-- ACARA -->
+    <div class="event">
+
+        <h2>Pemberkatan</h2>
+
+        <p>
+            Senin, 28 Desember 2026<br>
+            10.00 WIB
+        </p>
+
+        <p>
+            Gereja Santo Yusup Ambarawa
+        </p>
+
+        <hr>
+
+        <h2>Resepsi</h2>
+
+        <p>
+            Senin, 28 Desember 2026<br>
+            13.00 WIB
+        </p>
+
+        <p>
+            Jl. Gunung Payung No.49A<br>
+            Salatiga
+        </p>
+
+    </div>
+
+    <!-- GALERI -->
+    <h2 class="gallery-title">Galeri</h2>
+
+    <div class="gallery">
+        <img src="images/photo1.jpg">
+        <img src="images/photo2.jpg">
+        <img src="images/photo3.jpg">
+    </div>
+
+    <!-- MAP -->
+    <div class="location">
+
+        <h2>Denah Lokasi</h2>
+
+        <img src="images/map.png" class="map">
+
+    </div>
+
+</section>
+
+<script src="script.js"></script>
 
 </body>
 </html>
