@@ -1,37 +1,47 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Siwi & Satriya</title>
 
-<title>The Wedding Of Siwi & Satriya</title>
+    <meta
+        name="description"
+        content="The Wedding of Siwi & Satriya — 28 Desember 2026"
+    >
 
-<link rel="stylesheet" href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- AUDIO -->
+<!-- =========================================================
+     AUDIO
+========================================================= -->
+
 <audio id="music" loop>
     <source src="music/Canon in D.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ===================== -->
-<!-- COVER -->
-<!-- ===================== -->
+
+<!-- =========================================================
+     COVER
+========================================================= -->
 
 <section id="cover" class="cover">
 
-    <img src="images/cover.jpg" class="cover-bg">
+    <img
+        src="images/cover.jpg"
+        alt="Siwi & Satriya"
+        class="cover-bg"
+    >
 
     <div class="cover-overlay"></div>
 
     <div class="cover-content">
 
-        <p class="cover-subtitle">
+        <p class="cover-small">
             THE WEDDING OF
         </p>
 
@@ -47,48 +57,66 @@
 
         <div class="guest-box">
 
-            <small>Kepada Yth.</small>
+            <small>
+                Kepada Yth.
+            </small>
 
-            <h3 id="guestName">
+            <h3 id="guest">
                 Tamu Undangan
             </h3>
 
         </div>
 
-        <button id="openInvitation" class="btn-open">
-
+        <button
+            id="openInvitation"
+            class="btn-open"
+            type="button"
+        >
             Buka Undangan
-
         </button>
 
     </div>
 
 </section>
 
-<!-- ===================== -->
-<!-- MAIN CONTENT -->
-<!-- ===================== -->
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
 
 <main id="mainContent">
 
-<!-- OPENING -->
 
-<section class="section fade-section">
+<!-- =========================================================
+     OPENING
+========================================================= -->
 
-    <div class="opening-wrap">
+<section
+    id="opening"
+    class="section opening reveal"
+>
 
-        <img src="images/couple-main.jpg"
-             class="opening-image">
+    <div class="section-inner">
 
-        <p class="opening-label">
-            The Wedding Of
+        <p class="eyebrow">
+            THE WEDDING OF
         </p>
 
-        <h2 class="opening-title">
+        <h2>
             Siwi & Satriya
         </h2>
 
-        <p class="opening-desc">
+        <div class="opening-image-wrapper">
+
+            <img
+                src="images/couple-main.jpg"
+                alt="Siwi dan Satriya"
+                class="opening-photo grayscale"
+            >
+
+        </div>
+
+        <p class="opening-text">
 
             Dengan penuh rasa syukur kepada Tuhan,
             kami mengundang Bapak/Ibu/Saudara/i
@@ -101,26 +129,35 @@
 
 </section>
 
-<!-- AYAT -->
 
-<section class="section fade-section">
+<!-- =========================================================
+     AYAT ALKITAB
+========================================================= -->
 
-    <div class="verse-box">
+<section
+    id="verse"
+    class="section verse reveal"
+>
 
-        <h2>
-            Firman Tuhan
-        </h2>
+    <div class="section-inner">
+
+        <p class="eyebrow">
+            FIRMAN TUHAN
+        </p>
+
+        <div class="verse-symbol">
+            🤍
+        </div>
 
         <blockquote>
 
-            “Sehati sepikirlah kamu,
-            dan hiduplah dalam damai sejahtera;
+            “Sehati sepikirlah kamu, dan hiduplah dalam damai sejahtera;
             maka Allah, sumber kasih dan damai sejahtera
             akan menyertai kamu.”
 
         </blockquote>
 
-        <span>
+        <span class="verse-reference">
             2 Korintus 13:11b
         </span>
 
@@ -128,491 +165,857 @@
 
 </section>
 
-<!-- MEMPELAI -->
 
-<section id="couple" class="section fade-section">
+<!-- =========================================================
+     BRIDE & GROOM
+========================================================= -->
 
-    <h2 class="section-title">
-        The Bride & Groom
-    </h2>
+<section
+    id="couple"
+    class="section couple-section reveal"
+>
 
-    <div class="couple-slider">
+    <div class="section-inner">
 
-        <div class="couple-card active">
+        <p class="eyebrow">
+            THE BRIDE & GROOM
+        </p>
+
+        <h2 class="section-title">
+            Mempelai
+        </h2>
+
+
+        <div class="couple-slider">
+
+            <!-- FOTO MEMPELAI -->
+            <div class="couple-photo-wrapper">
+
+                <img
+                    id="couplePhoto"
+                    src="images/siwi.jpg"
+                    alt="Mempelai"
+                    class="couple-photo grayscale"
+                >
+
+            </div>
+
+
+            <!-- INFORMASI MEMPELAI -->
+            <div class="couple-info">
+
+                <p
+                    id="coupleRole"
+                    class="couple-role"
+                >
+                    THE BRIDE
+                </p>
+
+                <h3 id="coupleName">
+                    Margareta Septa Prima Siwi
+                </h3>
+
+                <p
+                    id="coupleParents"
+                    class="couple-parents"
+                >
+                    Putri dari
+                    <br>
+                    Bapak Wasikin &
+                    Ibu Kristiyaningsih
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="couple-dots">
+
+            <span
+                class="couple-dot active"
+                data-couple="0"
+            ></span>
+
+            <span
+                class="couple-dot"
+                data-couple="1"
+            ></span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     OUR STORY
+========================================================= -->
+
+<section
+    id="story"
+    class="section story-section reveal"
+>
+
+    <div class="section-inner">
+
+        <p class="eyebrow">
+            OUR STORY 🤍
+        </p>
+
+        <h2 class="section-title">
+            Our Story 🤍
+        </h2>
+
+
+        <div class="story-list">
+
+
+            <article class="story-item">
+
+                <div class="story-year">
+                    2016
+                </div>
+
+                <div class="story-content">
+
+                    <h3>
+                        Pertemuan Pertama
+                    </h3>
+
+                    <p>
+                        Tidak ada yang spesial saat itu. Ia hanya pelanggan di tempat makan Ibu, dan kami pun hanya sekadar saling tahu. Namun siapa sangka, dari perjumpaan sesederhana itu, cerita kami berdua dimulai.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="story-item">
+
+                <div class="story-year">
+                    2023
+                </div>
+
+                <div class="story-content">
+
+                    <h3>
+                        Cerita itu dimulai
+                    </h3>
+
+                    <p>
+                        Sebuah balasan pada Instagram Story membawa kami pada percakapan yang akhirnya membuat kami benar-benar saling mengenal. Dari sana, perlahan kami mulai menjadi lebih dekat.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="story-item">
+
+                <div class="story-year">
+                    2024
+                </div>
+
+                <div class="story-content">
+
+                    <h3>
+                        Menjadi Kita
+                    </h3>
+
+                    <p>
+                        Di awal tahun 2024, kami memutuskan untuk berjalan bersama. Tanpa pernah menyangka, kedekatan yang baru terjalin membawa kami pada sebuah hubungan yang begitu berarti.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="story-item">
+
+                <div class="story-year">
+                    2025
+                </div>
+
+                <div class="story-content">
+
+                    <h3>
+                        Bertumbuh Bersama
+                    </h3>
+
+                    <p>
+                        Kami belajar tentang cinta, komitmen, dan bertumbuh dalam iman. Di bulan Juli, ia menyampaikan niatnya untuk melangkah lebih serius. Kemudian di bulan Desember, niat baik tersebut dilanjutkan dengan pertemuan kedua keluarga.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="story-item">
+
+                <div class="story-year">
+                    2026
+                </div>
+
+                <div class="story-content">
+
+                    <h3>
+                        Our Forever Begins
+                    </h3>
+
+                    <p>
+                        Setelah berbagai proses yang kami lewati, kami belajar bahwa cinta bukan hanya tentang menemukan satu sama lain, tetapi tentang memilih untuk terus berjalan bersama.
+                    </p>
+
+                    <p class="story-ending">
+                        Dari yang dahulu hanya sebatas saling tahu, kini kami memilih untuk menjadi teman hidup. 🤍
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SAVE THE DATE
+========================================================= -->
+
+<section
+    id="date"
+    class="section date-section reveal"
+>
+
+    <div class="section-inner">
+
+        <p class="eyebrow">
+            SAVE THE DATE
+        </p>
+
+        <h2 class="section-title">
+            28 Desember 2026
+        </h2>
+
+        <p class="date-day">
+            Senin
+        </p>
+
+
+        <div class="countdown">
+
+            <div class="count-box">
+                <strong id="days">0</strong>
+                <span>Hari</span>
+            </div>
+
+            <div class="count-box">
+                <strong id="hours">0</strong>
+                <span>Jam</span>
+            </div>
+
+            <div class="count-box">
+                <strong id="minutes">0</strong>
+                <span>Menit</span>
+            </div>
+
+            <div class="count-box">
+                <strong id="seconds">0</strong>
+                <span>Detik</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     DETAIL ACARA + LOKASI
+========================================================= -->
+
+<section
+    id="event"
+    class="section event-section reveal"
+>
+
+    <div class="section-inner">
+
+        <p class="eyebrow">
+            WEDDING DAY
+        </p>
+
+        <h2 class="section-title">
+            Detail Acara
+        </h2>
+
+
+        <div class="event-list">
+
+
+            <!-- PEMBERKATAN -->
+
+            <article class="event-card">
+
+                <div class="event-icon">
+                    ⛪
+                </div>
+
+                <p class="event-label">
+                    PEMBERKATAN
+                </p>
+
+                <h3>
+                    Gereja Santo Yusup Ambarawa
+                </h3>
+
+                <p>
+                    Senin, 28 Desember 2026
+                </p>
+
+                <p>
+                    10.00 WIB
+                </p>
+
+                <a
+                    href="https://maps.app.goo.gl/DiTczHDAV6GFcgz27"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-map"
+                >
+                    Lihat Lokasi
+                </a>
+
+            </article>
+
+
+            <!-- RESEPSI -->
+
+            <article class="event-card">
+
+                <div class="event-icon">
+                    🥂
+                </div>
+
+                <p class="event-label">
+                    RESEPSI
+                </p>
+
+                <h3>
+                    Jl. Gunung Payung I No. 49A
+                </h3>
+
+                <p>
+                    Salatiga
+                </p>
+
+                <p>
+                    Senin, 28 Desember 2026
+                </p>
+
+                <p>
+                    13.00 WIB
+                </p>
+
+                <a
+                    href="https://maps.app.goo.gl/JUQCiiuyQV8SfxQRA"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-map"
+                >
+                    Lihat Lokasi
+                </a>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     GALLERY
+========================================================= -->
+
+<section
+    id="gallery"
+    class="section gallery-section reveal"
+>
+
+    <div class="section-inner">
+
+        <p class="eyebrow">
+            OUR MOMENTS
+        </p>
+
+        <h2 class="section-title">
+            Galeri
+        </h2>
+
+
+        <div class="gallery-collage">
+
+            <div class="gallery-item gallery-large">
+
+                <img
+                    src="images/photo1.jpg"
+                    alt="Foto Siwi dan Satriya"
+                    loading="lazy"
+                    class="grayscale"
+                >
+
+            </div>
+
+
+            <div class="gallery-item">
+
+                <img
+                    src="images/photo2.jpg"
+                    alt="Foto prewedding"
+                    loading="lazy"
+                    class="grayscale"
+                >
+
+            </div>
+
+
+            <div class="gallery-item">
+
+                <img
+                    src="images/photo3.jpg"
+                    alt="Foto prewedding"
+                    loading="lazy"
+                    class="grayscale"
+                >
+
+            </div>
+
+
+            <div class="gallery-item">
+
+                <img
+                    src="images/photo4.jpg"
+                    alt="Foto prewedding"
+                    loading="lazy"
+                    class="grayscale"
+                >
+
+            </div>
+
+
+            <div class="gallery-item">
+
+                <img
+                    src="images/photo5.jpg"
+                    alt="Foto prewedding"
+                    loading="lazy"
+                    class="grayscale"
+                >
+
+            </div>
+
+
+            <div class="gallery-item gallery-wide">
+
+                <img
+                    src="images/photo6.jpg"
+                    alt="Foto prewedding"
+                    loading="lazy"
+                    class="grayscale"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     RSVP
+========================================================= -->
+
+<section
+    id="rsvp"
+    class="section rsvp-section reveal"
+>
+
+    <div class="section-inner">
+
+        <p class="eyebrow">
+            RSVP
+        </p>
+
+        <h2 class="section-title">
+            Konfirmasi Kehadiran
+        </h2>
+
+        <p class="section-description">
+            Mohon konfirmasi kehadiran Anda
+            sebelum acara berlangsung.
+        </p>
+
+
+        <form
+            id="rsvpForm"
+            class="rsvp-form"
+        >
+
+            <div class="form-group">
+
+                <label for="nama">
+                    Nama
+                </label>
+
+                <input
+                    type="text"
+                    id="nama"
+                    name="nama"
+                    placeholder="Nama Anda"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="kehadiran">
+                    Konfirmasi Kehadiran
+                </label>
+
+                <select
+                    id="kehadiran"
+                    name="kehadiran"
+                    required
+                >
+
+                    <option value="">
+                        Pilih kehadiran
+                    </option>
+
+                    <option value="Hadir">
+                        Hadir
+                    </option>
+
+                    <option value="Tidak Hadir">
+                        Tidak Hadir
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="jumlah">
+                    Jumlah Tamu
+                </label>
+
+                <input
+                    type="number"
+                    id="jumlah"
+                    name="jumlah"
+                    value="1"
+                    min="1"
+                    max="10"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn-submit"
+                id="submitRsvp"
+            >
+                Kirim RSVP
+            </button>
+
+        </form>
+
+
+        <p
+            id="statusRsvp"
+            class="status-rsvp"
+        ></p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WEDDING WISHES
+========================================================= -->
+
+<section
+    id="wishes"
+    class="section wishes-section reveal"
+>
+
+    <div class="section-inner">
+
+        <p class="eyebrow">
+            WEDDING WISHES
+        </p>
+
+        <h2 class="section-title">
+            Wedding Wishes
+        </h2>
+
+        <p class="section-description">
+            Ucapan dan doa dari Anda
+            akan menjadi bagian dari kebahagiaan kami.
+        </p>
+
+
+        <form
+            id="wishForm"
+            class="wish-form"
+        >
+
+            <div class="form-group">
+
+                <label for="wishNama">
+                    Nama
+                </label>
+
+                <input
+                    type="text"
+                    id="wishNama"
+                    placeholder="Nama Anda"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="ucapan">
+                    Ucapan & Doa
+                </label>
+
+                <textarea
+                    id="ucapan"
+                    rows="5"
+                    placeholder="Tuliskan ucapan dan doa..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn-submit"
+            >
+                Kirim Ucapan
+            </button>
+
+        </form>
+
+
+        <!-- DAFTAR WISHES -->
+
+        <div
+            id="wishList"
+            class="wish-list"
+        ></div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     TANDA KASIH
+========================================================= -->
+
+<section
+    id="gift"
+    class="section gift-section reveal"
+>
+
+    <div class="section-inner">
+
+        <p class="eyebrow">
+            TANDA KASIH
+        </p>
+
+        <h2 class="section-title">
+            Tanda Kasih
+        </h2>
+
+        <div class="gift-list">
+
+
+            <div class="gift-card">
+
+                <h3>
+                    BCA
+                </h3>
+
+                <p class="account-number">
+                    0131366158
+                </p>
+
+                <p>
+                    a.n. Margareta Septa Prima Siwi
+                </p>
+
+            </div>
+
+
+            <div class="gift-card">
+
+                <h3>
+                    BCA
+                </h3>
+
+                <p class="account-number">
+                    3200875965
+                </p>
+
+                <p>
+                    a.n. Ignatius Satriya Bagus Pradana
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CLOSING
+========================================================= -->
+
+<section
+    id="closing"
+    class="section closing-section reveal"
+>
+
+    <div class="section-inner">
+
+        <div class="closing-photo-wrapper">
 
             <img
-                src="images/siwi.jpg"
-                alt="Siwi"
-                class="couple-photo"
+                src="images/couple-main.jpg"
+                alt="Siwi & Satriya"
+                class="closing-photo grayscale"
             >
 
-            <h3>
-                Margareta Septa Prima Siwi
-            </h3>
-
-            <p>
-
-                Putri dari
-
-                <br><br>
-
-                Bapak Wasikin
-
-                <br>
-
-                &
-
-                <br>
-
-                Ibu Kristiyaningsih
-
-            </p>
-
         </div>
 
-        <div class="couple-card">
+        <p class="eyebrow">
+            TERIMA KASIH
+        </p>
 
-            <img
-                src="images/satriya.jpg"
-                alt="Satriya"
-                class="couple-photo"
-            >
+        <h2>
+            Terima Kasih
+        </h2>
 
-            <h3>
-                Ignatius Satriya Bagus Pradana
-            </h3>
+        <p class="closing-text">
 
-            <p>
+            Merupakan suatu kehormatan dan
+            kebahagiaan bagi kami apabila
+            Bapak/Ibu/Saudara/i berkenan hadir
+            serta memberikan doa restu.
 
-                Putra dari
+        </p>
 
-                <br><br>
+        <h3>
+            Siwi & Satriya
+        </h3>
 
-                Bapak Arinto Subandoko Vinc
-
-                <br>
-
-                &
-
-                <br>
-
-                Ibu Theresia Maria Dwi Aryani
-
-            </p>
-
+        <div class="closing-heart">
+            🤍
         </div>
 
     </div>
 
 </section>
 
-<!-- OUR STORY -->
-
-<section id="story" class="section fade-section">
-
-<h2 class="section-title">
-    Our Story 🤍
-</h2>
-
-<div class="story-timeline">
-
-<div class="story-item">
-
-<h3>
-2016 — Pertemuan Pertama
-</h3>
-
-<p>
-Tidak ada yang spesial saat itu.
-Ia hanya pelanggan di tempat makan Ibu,
-dan kami pun hanya sekadar saling tahu.
-Namun siapa sangka,
-dari perjumpaan sesederhana itu,
-cerita kami berdua dimulai.
-</p>
-
-</div>
-
-<div class="story-item">
-
-<h3>
-2023 — Cerita itu dimulai
-</h3>
-
-<p>
-Sebuah balasan pada Instagram Story
-membawa kami pada percakapan yang akhirnya
-membuat kami benar-benar saling mengenal.
-Dari sana,
-perlahan kami mulai menjadi lebih dekat.
-</p>
-
-</div>
-
-<div class="story-item">
-
-<h3>
-2024 — Menjadi Kita
-</h3>
-
-<p>
-Di awal tahun 2024,
-kami memutuskan untuk berjalan bersama.
-Tanpa pernah menyangka,
-kedekatan yang baru terjalin membawa kami
-pada sebuah hubungan yang begitu berarti.
-</p>
-
-</div>
-
-<div class="story-item">
-
-<h3>
-2025 — Bertumbuh Bersama
-</h3>
-
-<p>
-Kami belajar tentang cinta,
-komitmen,
-dan bertumbuh dalam iman.
-Di bulan Juli,
-ia menyampaikan niatnya
-untuk melangkah lebih serius.
-
-Kemudian di bulan Desember,
-niat baik tersebut dilanjutkan
-dengan pertemuan kedua keluarga.
-</p>
-
-</div>
-
-<div class="story-item">
-
-<h3>
-2026 — Our Forever Begins
-</h3>
-
-<p>
-
-Setelah berbagai proses yang kami lewati,
-kami belajar bahwa cinta bukan hanya tentang menemukan satu sama lain,
-tetapi tentang memilih untuk terus berjalan bersama.
-
-<br><br>
-
-Dari yang dahulu hanya sebatas saling tahu,
-kini kami memilih untuk menjadi teman hidup. 🤍
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-    <!-- SAVE THE DATE -->
-
-<section id="date" class="section fade-section">
-
-    <h2 class="section-title">
-        Save The Date
-    </h2>
-
-    <p class="save-date">
-        Senin, 28 Desember 2026
-    </p>
-
-    <div class="countdown">
-
-        <div class="count-box">
-            <span id="days">00</span>
-            <small>Hari</small>
-        </div>
-
-        <div class="count-box">
-            <span id="hours">00</span>
-            <small>Jam</small>
-        </div>
-
-        <div class="count-box">
-            <span id="minutes">00</span>
-            <small>Menit</small>
-        </div>
-
-        <div class="count-box">
-            <span id="seconds">00</span>
-            <small>Detik</small>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- DETAIL ACARA + LOKASI -->
-
-<section id="event" class="section fade-section">
-
-    <h2 class="section-title">
-        Wedding Event
-    </h2>
-
-    <div class="event-grid">
-
-        <div class="event-card">
-
-            <h3>
-                ⛪ Pemberkatan
-            </h3>
-
-            <p>
-                Senin, 28 Desember 2026
-            </p>
-
-            <p>
-                10.00 WIB
-            </p>
-
-            <p>
-                Gereja Santo Yusup Ambarawa
-            </p>
-
-            <a
-            href="https://maps.app.goo.gl/DiTczHDAV6GFcgz27"
-            target="_blank"
-            class="btn-map">
-
-                Lihat Lokasi
-
-            </a>
-
-        </div>
-
-        <div class="event-card">
-
-            <h3>
-                🥂 Resepsi
-            </h3>
-
-            <p>
-                Senin, 28 Desember 2026
-            </p>
-
-            <p>
-                13.00 WIB
-            </p>
-
-            <p>
-                Jl. Gunung Payung I No.49A
-                <br>
-                Salatiga
-            </p>
-
-            <a
-            href="https://maps.app.goo.gl/JUQCiiuyQV8SfxQRA"
-            target="_blank"
-            class="btn-map">
-
-                Lihat Lokasi
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- GALERI -->
-
-<section id="gallery" class="section fade-section">
-
-    <h2 class="section-title">
-        Gallery
-    </h2>
-
-    <div class="gallery-grid">
-
-        <img src="images/photo1.jpg" alt="">
-        <img src="images/photo2.jpg" alt="">
-        <img src="images/photo3.jpg" alt="">
-        <img src="images/photo4.jpg" alt="">
-        <img src="images/photo5.jpg" alt="">
-        <img src="images/photo6.jpg" alt="">
-
-    </div>
-
-</section>
-
-<!-- RSVP -->
-
-<section id="rsvp" class="section fade-section">
-
-    <h2 class="section-title">
-        RSVP
-    </h2>
-
-    <form id="rsvpForm" class="rsvp-form">
-
-        <input
-        type="text"
-        id="nama"
-        placeholder="Nama Lengkap"
-        required>
-
-        <select id="kehadiran" required>
-
-            <option value="">
-                Konfirmasi Kehadiran
-            </option>
-
-            <option value="Hadir">
-                Hadir
-            </option>
-
-            <option value="Tidak Hadir">
-                Tidak Hadir
-            </option>
-
-        </select>
-
-        <input
-        type="number"
-        id="jumlah"
-        min="1"
-        value="1">
-
-        <button type="submit">
-
-            Kirim RSVP
-
-        </button>
-
-    </form>
-
-    <p id="statusRsvp"></p>
-
-</section>
-
-<!-- WEDDING WISHES -->
-
-<section id="wishes" class="section fade-section">
-
-    <h2 class="section-title">
-        Wedding Wishes 💌
-    </h2>
-
-    <form id="wishForm" class="wish-form">
-
-        <input
-        type="text"
-        id="wishName"
-        placeholder="Nama"
-        required>
-
-        <textarea
-        id="wishMessage"
-        rows="5"
-        placeholder="Tuliskan ucapan dan doa terbaik..."
-        required></textarea>
-
-        <button type="submit">
-
-            Kirim Ucapan
-
-        </button>
-
-    </form>
-
-    <div id="wishList" class="wish-list">
-
-    </div>
-
-</section>
-
-<!-- GIFT -->
-
-<section id="gift" class="section fade-section">
-
-    <h2 class="section-title">
-        Tanda Kasih
-    </h2>
-
-    <p class="gift-desc">
-
-        Doa restu Anda merupakan hadiah yang sangat berarti bagi kami.
-
-    </p>
-
-    <div class="gift-grid">
-
-        <div class="gift-card">
-
-            <h3>BCA</h3>
-
-            <p>
-                0131366158
-            </p>
-
-            <small>
-                a.n. Margareta Septa Prima Siwi
-            </small>
-
-        </div>
-
-        <div class="gift-card">
-
-            <h3>BCA</h3>
-
-            <p>
-                3200875965
-            </p>
-
-            <small>
-                a.n. Ignatius Satriya Bagus Pradana
-            </small>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- CLOSING -->
-
-<section class="section closing fade-section">
-
-    <h2>
-        Terima Kasih
-    </h2>
-
-    <p>
-
-        Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila
-        Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
-
-    </p>
-
-    <h3>
-        Siwi & Satriya
-    </h3>
-
-</section>
 
 </main>
 
-<!-- BOTTOM NAVIGATION -->
+
+<!-- =========================================================
+     BOTTOM NAVIGATION
+========================================================= -->
 
 <nav class="bottom-nav">
 
-    <a href="#couple">Mempelai</a>
-    <a href="#story">Story</a>
-    <a href="#event">Acara</a>
-    <a href="#gallery">Galeri</a>
-    <a href="#rsvp">RSVP</a>
+    <a href="#opening">
+        <span>⌂</span>
+        <small>Home</small>
+    </a>
+
+    <a href="#couple">
+        <span>♡</span>
+        <small>Mempelai</small>
+    </a>
+
+    <a href="#story">
+        <span>✦</span>
+        <small>Story</small>
+    </a>
+
+    <a href="#event">
+        <span>♧</span>
+        <small>Acara</small>
+    </a>
+
+    <a href="#gallery">
+        <span>▧</span>
+        <small>Galeri</small>
+    </a>
+
+    <a href="#rsvp">
+        <span>✉</span>
+        <small>RSVP</small>
+    </a>
 
 </nav>
+
+
+<!-- =========================================================
+     MUSIC BUTTON
+========================================================= -->
+
+<button
+    id="musicButton"
+    class="music-button"
+    type="button"
+    aria-label="Musik"
+>
+    ♫
+</button>
+
 
 <script src="script.js"></script>
 
