@@ -13,9 +13,9 @@ html{
 }
 
 body{
-    font-family:'Segoe UI',sans-serif;
+    font-family:"Segoe UI",sans-serif;
     background:#ffffff;
-    color:#111111;
+    color:#111;
     line-height:1.8;
     overflow-x:hidden;
 }
@@ -25,18 +25,17 @@ body{
 ========================= */
 
 .cover{
-    position:relative;
-    width:100%;
-    height:100vh;
+    position:fixed;
+    inset:0;
+    z-index:9999;
     overflow:hidden;
 }
 
 .cover-bg{
-    position:absolute;
-    inset:0;
     width:100%;
     height:100%;
     object-fit:cover;
+    filter:grayscale(100%);
 }
 
 .cover-overlay{
@@ -53,42 +52,34 @@ body{
     text-align:center;
     color:#fff;
     width:90%;
-    z-index:2;
 }
 
 .cover-subtitle{
-    letter-spacing:5px;
+    letter-spacing:4px;
     font-size:12px;
     margin-bottom:15px;
 }
 
 .cover-content h1{
-    font-size:72px;
+    font-size:64px;
     font-weight:300;
-    line-height:1.1;
     margin-bottom:15px;
 }
 
-.cover-content h1 span{
+.cover-content span{
     font-style:italic;
 }
 
 .cover-date{
-    font-size:18px;
     margin-bottom:25px;
 }
 
-.guest-wrapper{
+.guest-box{
     margin-bottom:30px;
 }
 
-.guest-wrapper small{
-    opacity:.8;
-}
-
-.guest-wrapper h3{
-    margin-top:10px;
-    font-size:22px;
+.guest-box h3{
+    margin-top:8px;
 }
 
 .btn-open{
@@ -96,10 +87,10 @@ body{
     cursor:pointer;
     background:#fff;
     color:#111;
-    padding:15px 34px;
+    padding:15px 35px;
     border-radius:999px;
-    font-weight:600;
     font-size:15px;
+    font-weight:600;
 }
 
 /* =========================
@@ -111,14 +102,23 @@ body{
 }
 
 .section{
-    padding:90px 20px;
+    padding:100px 20px;
 }
 
 .section-title{
     text-align:center;
+    font-size:34px;
     margin-bottom:50px;
-    font-size:36px;
     font-weight:300;
+}
+
+.section-label{
+    display:block;
+    text-align:center;
+    letter-spacing:3px;
+    font-size:12px;
+    margin-bottom:15px;
+    color:#777;
 }
 
 /* =========================
@@ -126,86 +126,78 @@ body{
 ========================= */
 
 .opening{
-    max-width:1000px;
+    max-width:1100px;
     margin:auto;
-    text-align:center;
 }
 
 .opening-photo{
     width:100%;
     max-width:700px;
     display:block;
-    margin:0 auto 40px;
+    margin:auto;
     border-radius:25px;
+    filter:grayscale(100%);
 }
 
 .opening-text{
+    text-align:center;
     max-width:700px;
-    margin:auto;
+    margin:40px auto 0;
 }
 
 /* =========================
    AYAT
 ========================= */
 
-.verse{
-    max-width:900px;
+.verse-card{
+    max-width:800px;
     margin:auto;
     text-align:center;
+    padding:50px 30px;
+    border-top:1px solid #ddd;
+    border-bottom:1px solid #ddd;
 }
 
-.verse h3{
+.verse-card h3{
     margin-bottom:20px;
-    letter-spacing:3px;
-    font-size:14px;
-    color:#777;
 }
 
-.verse blockquote{
-    font-size:24px;
+.verse-text{
+    font-size:22px;
     font-style:italic;
     font-family:Georgia,serif;
-    line-height:1.9;
-}
-
-.verse span{
-    display:block;
-    margin-top:25px;
-    color:#777;
+    margin-bottom:20px;
 }
 
 /* =========================
    MEMPELAI
 ========================= */
 
-.couple-grid{
-    max-width:1000px;
+.person-section{
+    max-width:700px;
     margin:auto;
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:50px;
-}
-
-.person-card{
     text-align:center;
 }
 
-.person-card img{
-    width:240px;
-    height:240px;
+.person-photo{
+    width:320px;
+    height:320px;
     object-fit:cover;
     border-radius:50%;
-    margin-bottom:25px;
+    display:block;
+    margin:30px auto;
+    filter:grayscale(100%);
+    border:8px solid #f2f2f2;
 }
 
-.person-card h3{
-    font-size:28px;
-    margin-bottom:10px;
+.person-section h2{
+    margin-bottom:15px;
+    font-size:32px;
     font-weight:400;
 }
 
-.person-card p{
-    color:#666;
+.person-section p{
+    color:#555;
 }
 
 /* =========================
@@ -213,45 +205,42 @@ body{
 ========================= */
 
 .timeline{
-    max-width:850px;
+    max-width:800px;
     margin:auto;
 }
 
 .timeline-item{
     padding:25px;
-    margin-bottom:20px;
     border-left:2px solid #111;
-    background:#fafafa;
+    margin-bottom:25px;
 }
 
-.timeline-item h4{
+.timeline-item h3{
     margin-bottom:10px;
 }
 
 /* =========================
-   COUNTDOWN
+   SAVE DATE
 ========================= */
 
-.save-date-text{
+.save-date{
     text-align:center;
-    margin-bottom:35px;
+    margin-bottom:40px;
     font-size:18px;
 }
 
 .countdown{
     display:flex;
     justify-content:center;
-    flex-wrap:wrap;
     gap:15px;
+    flex-wrap:wrap;
 }
 
 .count-box{
     width:110px;
     height:110px;
+    border:1px solid #ddd;
     border-radius:20px;
-    background:#111;
-    color:#fff;
-
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -260,11 +249,11 @@ body{
 
 .count-box span{
     font-size:34px;
-    font-weight:700;
+    font-weight:bold;
 }
 
 .count-box small{
-    margin-top:5px;
+    color:#666;
 }
 
 /* =========================
@@ -275,15 +264,16 @@ body{
     max-width:1000px;
     margin:auto;
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
     gap:25px;
 }
 
 .event-card{
-    background:#f7f7f7;
+    border:1px solid #ddd;
+    border-radius:25px;
     padding:35px;
-    border-radius:20px;
     text-align:center;
+    background:#fff;
 }
 
 .event-card h3{
@@ -291,7 +281,7 @@ body{
 }
 
 .event-card p{
-    margin-bottom:8px;
+    margin-bottom:10px;
 }
 
 /* =========================
@@ -301,36 +291,31 @@ body{
 .btn-map{
     display:inline-block;
     margin-top:15px;
+    padding:12px 25px;
     background:#111;
     color:#fff;
     text-decoration:none;
-    padding:12px 22px;
     border-radius:999px;
 }
 
 /* =========================
-   GALERI
+   GALLERY
 ========================= */
 
 .gallery{
     max-width:1200px;
     margin:auto;
-
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
 }
 
 .gallery img{
     width:100%;
     height:380px;
     object-fit:cover;
-    border-radius:18px;
-    transition:.3s;
-}
-
-.gallery img:hover{
-    transform:scale(1.03);
+    border-radius:20px;
+    filter:grayscale(100%);
 }
 
 /* =========================
@@ -338,36 +323,54 @@ body{
 ========================= */
 
 .rsvp-form{
-    max-width:650px;
+    max-width:700px;
     margin:auto;
-
-    display:flex;
-    flex-direction:column;
-    gap:15px;
 }
 
 .rsvp-form input,
 .rsvp-form select,
 .rsvp-form textarea{
     width:100%;
-    padding:16px;
+    padding:15px;
+    margin-bottom:15px;
     border:1px solid #ddd;
     border-radius:12px;
     font-size:15px;
 }
 
 .rsvp-form button{
+    width:100%;
+    padding:15px;
     border:none;
+    border-radius:12px;
     background:#111;
     color:#fff;
-    padding:16px;
-    border-radius:12px;
     cursor:pointer;
 }
 
 #statusRsvp{
     text-align:center;
-    margin-top:20px;
+    margin-top:15px;
+}
+
+/* =========================
+   WISHES
+========================= */
+
+.wish-list{
+    max-width:700px;
+    margin:30px auto 0;
+}
+
+.wish-card{
+    border:1px solid #ddd;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+.wish-card h4{
+    margin-bottom:10px;
 }
 
 /* =========================
@@ -385,9 +388,7 @@ body{
 }
 
 .closing h3{
-    margin-top:30px;
-    font-size:32px;
-    font-weight:300;
+    margin-top:20px;
 }
 
 /* =========================
@@ -396,28 +397,38 @@ body{
 
 .bottom-nav{
     position:fixed;
-    bottom:18px;
     left:50%;
+    bottom:20px;
     transform:translateX(-50%);
-
     background:#fff;
+    border:1px solid #ddd;
     border-radius:999px;
-
+    padding:12px 20px;
     display:flex;
     gap:20px;
-
-    padding:14px 24px;
-
-    box-shadow:0 10px 30px rgba(0,0,0,.12);
-
     z-index:999;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
 .bottom-nav a{
     text-decoration:none;
     color:#111;
     font-size:14px;
-    font-weight:600;
+}
+
+/* =========================
+   FADE
+========================= */
+
+.fade-section{
+    opacity:0;
+    transform:translateY(50px);
+    transition:all .8s ease;
+}
+
+.fade-section.show{
+    opacity:1;
+    transform:none;
 }
 
 /* =========================
@@ -438,26 +449,21 @@ body{
         font-size:28px;
     }
 
-    .couple-grid{
-        grid-template-columns:1fr;
-        gap:40px;
+    .person-photo{
+        width:240px;
+        height:240px;
     }
 
-    .person-card img{
-        width:200px;
-        height:200px;
+    .person-section h2{
+        font-size:26px;
     }
 
-    .event-grid{
-        grid-template-columns:1fr;
-    }
-
-    .gallery{
-        grid-template-columns:1fr;
+    .verse-text{
+        font-size:18px;
     }
 
     .gallery img{
-        height:300px;
+        height:260px;
     }
 
     .count-box{
@@ -469,17 +475,13 @@ body{
         font-size:24px;
     }
 
-    .verse blockquote{
-        font-size:18px;
-    }
-
     .bottom-nav{
         width:95%;
         justify-content:space-around;
-        gap:8px;
+        gap:10px;
     }
 
     .bottom-nav a{
-        font-size:11px;
+        font-size:12px;
     }
 }
