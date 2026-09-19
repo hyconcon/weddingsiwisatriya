@@ -1,978 +1,852 @@
-/* =========================================================
-   CONFIGURATION
-========================================================= */
+/* =====================================================
+   WEDDING INVITATION
+   SIWI & SATRIYA
+===================================================== */
 
-const SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbzc8ypaEaKywriXYzc318iE6diOzxJNCUBs3n2uEkf8pRzc8-9eRv5ClbY5zk-sRFKY/exec";
+document.addEventListener("DOMContentLoaded", function () {
 
 
-/* =========================================================
-   GUEST NAME DARI URL
-   Contoh:
-   ?to=Eoni
-========================================================= */
+    /* =================================================
+       ELEMENTS
+    ================================================= */
 
-function getGuestName() {
+    const cover =
+        document.getElementById("cover");
 
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
+    const mainContent =
+        document.getElementById("mainContent");
+
+    const openInvitation =
+        document.getElementById("openInvitation");
+
+    const music =
+        document.getElementById("music");
+
+    const musicButton =
+        document.getElementById("musicButton");
+
+    const bottomNav =
+        document.getElementById("bottomNav");
 
     const guest =
-        params.get("to");
-
-    const guestElement =
         document.getElementById("guest");
 
-    if (!guestElement) {
-        return;
-    }
 
-    if (guest && guest.trim() !== "") {
+    /* =================================================
+       GOOGLE APPS SCRIPT
+       RSVP
+    ================================================= */
 
-        guestElement.textContent =
-            decodeURIComponent(
-                guest
-            ).replace(/\+/g, " ");
-
-    }
-
-}
+    const GOOGLE_SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbzc8ypaEaKywriXYzc318iE6diOzxJNCUBs3n2uEkf8pRzc8-9eRv5ClbY5zk-sRFKY/exec";
 
 
-/* =========================================================
-   OPEN INVITATION
-========================================================= */
+    /* =================================================
+       GUEST NAME
+       URL:
+       ?to=Nama%20Tamu
+    ================================================= */
 
-const openInvitation =
-    document.getElementById(
-        "openInvitation"
-    );
+    const params =
+        new URLSearchParams(window.location.search);
 
-const cover =
-    document.getElementById("cover");
-
-const mainContent =
-    document.getElementById(
-        "mainContent"
-    );
-
-const music =
-    document.getElementById("music");
-
-const musicButton =
-    document.getElementById(
-        "musicButton"
-    );
+    const guestName =
+        params.get("to");
 
 
-openInvitation.addEventListener(
-    "click",
-    () => {
+    if (guestName && guest) {
 
-        cover.classList.add(
-            "cover-opened"
-        );
+        const decodedName =
+            guestName.replace(/\+/g, " ");
 
-        mainContent.classList.add(
-            "main-visible"
-        );
-
-
-        music.volume = 0.35;
-
-        music.play()
-            .then(() => {
-
-                musicButton.textContent =
-                    "♫";
-
-            })
-            .catch(() => {
-
-                console.log(
-                    "Autoplay diblokir browser."
-                );
-
-            });
-
-
-        setTimeout(() => {
-
-            document
-                .getElementById("opening")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
-
-        }, 350);
+        guest.textContent =
+            decodedName;
 
     }
-);
 
 
-/* =========================================================
-   MUSIC BUTTON
-========================================================= */
+    /* =================================================
+       INITIAL STATE
+    ================================================= */
 
-let musicPlaying = false;
+    mainContent.classList.add("hidden");
 
+    bottomNav.classList.add("hidden");
 
-musicButton.addEventListener(
-    "click",
-    () => {
+    musicButton.classList.add("hidden");
 
-        if (
-            music.paused
-        ) {
+    document.body.classList.remove("invitation-open");
 
-            music.play()
-                .then(() => {
 
-                    musicPlaying = true;
+    /* =================================================
+       OPEN INVITATION
+    ================================================= */
 
-                    musicButton.textContent =
-                        "♫";
-
-                });
-
-        } else {
-
-            music.pause();
-
-            musicPlaying = false;
-
-            musicButton.textContent =
-                "♪";
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   FADE IN / REVEAL SAAT SCROLL
-========================================================= */
-
-const revealElements =
-    document.querySelectorAll(
-        ".reveal"
-    );
-
-
-const revealObserver =
-    new IntersectionObserver(
-        (entries) => {
-
-            entries.forEach(
-                (entry) => {
-
-                    if (
-                        entry.isIntersecting
-                    ) {
-
-                        entry.target.classList.add(
-                            "show"
-                        );
-
-                        /*
-                         * Setelah muncul,
-                         * tidak perlu diamati
-                         * lagi.
-                         */
-
-                        revealObserver.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                }
-            );
-
-        },
-        {
-            threshold: 0.12,
-
-            rootMargin:
-                "0px 0px -60px 0px"
-        }
-    );
-
-
-revealElements.forEach(
-    (element) => {
-
-        revealObserver.observe(
-            element
-        );
-
-    }
-);
-
-
-/* =========================================================
-   COUPLE SLIDER
-   SATU-SATU DAN GANTI OTOMATIS
-========================================================= */
-
-const coupleData = [
-
-    {
-        role: "THE BRIDE",
-
-        name:
-            "Margareta Septa Prima Siwi",
-
-        parents:
-            "Putri dari<br>Bapak Wasikin & Ibu Kristiyaningsih",
-
-        image:
-            "images/siwi.jpg"
-    },
-
-    {
-        role: "THE GROOM",
-
-        name:
-            "Ignatius Satriya Bagus Pradana",
-
-        parents:
-            "Putra dari<br>Bapak Arinto Subandoko Vinc & Ibu Theresia Maria Dwi Aryani",
-
-        image:
-            "images/satriya.jpg"
-    }
-
-];
-
-
-let coupleIndex = 0;
-
-
-const couplePhoto =
-    document.getElementById(
-        "couplePhoto"
-    );
-
-const coupleRole =
-    document.getElementById(
-        "coupleRole"
-    );
-
-const coupleName =
-    document.getElementById(
-        "coupleName"
-    );
-
-const coupleParents =
-    document.getElementById(
-        "coupleParents"
-    );
-
-const coupleDots =
-    document.querySelectorAll(
-        ".couple-dot"
-    );
-
-
-function changeCouple(
-    index
-) {
-
-    if (
-        !couplePhoto ||
-        !coupleRole ||
-        !coupleName ||
-        !coupleParents
-    ) {
-        return;
-    }
-
-
-    const person =
-        coupleData[index];
-
-
-    couplePhoto.classList.add(
-        "fade-photo"
-    );
-
-
-    setTimeout(() => {
-
-        couplePhoto.src =
-            person.image;
-
-        couplePhoto.alt =
-            person.name;
-
-        coupleRole.textContent =
-            person.role;
-
-        coupleName.textContent =
-            person.name;
-
-        coupleParents.innerHTML =
-            person.parents;
-
-
-        coupleDots.forEach(
-            (dot, dotIndex) => {
-
-                dot.classList.toggle(
-                    "active",
-                    dotIndex === index
-                );
-
-            }
-        );
-
-
-        couplePhoto.classList.remove(
-            "fade-photo"
-        );
-
-    }, 350);
-
-}
-
-
-function nextCouple() {
-
-    coupleIndex++;
-
-    if (
-        coupleIndex >=
-        coupleData.length
-    ) {
-
-        coupleIndex = 0;
-
-    }
-
-    changeCouple(
-        coupleIndex
-    );
-
-}
-
-
-/*
- * Ganti foto setiap 5 detik.
- */
-
-setInterval(
-    nextCouple,
-    5000
-);
-
-
-/*
- * Klik titik.
- */
-
-coupleDots.forEach(
-    (dot) => {
-
-        dot.addEventListener(
-            "click",
-            () => {
-
-                coupleIndex =
-                    Number(
-                        dot.dataset.couple
-                    );
-
-                changeCouple(
-                    coupleIndex
-                );
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================================
-   COUNTDOWN
-========================================================= */
-
-const weddingDate =
-    new Date(
-        "December 28, 2026 10:00:00 GMT+0700"
-    ).getTime();
-
-
-function updateCountdown() {
-
-    const now =
-        new Date().getTime();
-
-    const distance =
-        weddingDate - now;
-
-
-    const days =
-        document.getElementById(
-            "days"
-        );
-
-    const hours =
-        document.getElementById(
-            "hours"
-        );
-
-    const minutes =
-        document.getElementById(
-            "minutes"
-        );
-
-    const seconds =
-        document.getElementById(
-            "seconds"
-        );
-
-
-    if (
-        distance <= 0
-    ) {
-
-        days.textContent = "0";
-
-        hours.textContent = "0";
-
-        minutes.textContent = "0";
-
-        seconds.textContent = "0";
-
-        return;
-
-    }
-
-
-    const totalSeconds =
-        Math.floor(
-            distance / 1000
-        );
-
-
-    const dayValue =
-        Math.floor(
-            totalSeconds /
-            (60 * 60 * 24)
-        );
-
-
-    const hourValue =
-        Math.floor(
-            (
-                totalSeconds %
-                (60 * 60 * 24)
-            ) /
-            (60 * 60)
-        );
-
-
-    const minuteValue =
-        Math.floor(
-            (
-                totalSeconds %
-                (60 * 60)
-            ) /
-            60
-        );
-
-
-    const secondValue =
-        totalSeconds %
-        60;
-
-
-    days.textContent =
-        dayValue;
-
-    hours.textContent =
-        String(
-            hourValue
-        ).padStart(2, "0");
-
-    minutes.textContent =
-        String(
-            minuteValue
-        ).padStart(2, "0");
-
-    seconds.textContent =
-        String(
-            secondValue
-        ).padStart(2, "0");
-
-}
-
-
-updateCountdown();
-
-
-setInterval(
-    updateCountdown,
-    1000
-);
-
-
-/* =========================================================
-   RSVP
-========================================================= */
-
-const rsvpForm =
-    document.getElementById(
-        "rsvpForm"
-    );
-
-const statusRsvp =
-    document.getElementById(
-        "statusRsvp"
-    );
-
-const submitRsvp =
-    document.getElementById(
-        "submitRsvp"
-    );
-
-
-rsvpForm.addEventListener(
-    "submit",
-    async (event) => {
-
-        event.preventDefault();
-
-
-        const nama =
-            document.getElementById(
-                "nama"
-            ).value.trim();
-
-
-        const kehadiran =
-            document.getElementById(
-                "kehadiran"
-            ).value;
-
-
-        const jumlah =
-            document.getElementById(
-                "jumlah"
-            ).value;
-
-
-        if (
-            !nama ||
-            !kehadiran ||
-            !jumlah
-        ) {
-
-            statusRsvp.textContent =
-                "Mohon lengkapi data RSVP.";
-
-            return;
-
-        }
-
-
-        submitRsvp.disabled =
-            true;
-
-        submitRsvp.textContent =
-            "Mengirim...";
-
-
-        statusRsvp.textContent =
-            "Sedang mengirim RSVP...";
-
-
-        const data = {
-
-            nama:
-                nama,
-
-            kehadiran:
-                kehadiran,
-
-            jumlah:
-                jumlah,
-
-            ucapan:
-                ""
-
-        };
-
-
-        try {
+    openInvitation.addEventListener(
+        "click",
+        function () {
 
             /*
-             * Body dikirim sebagai string JSON.
-             *
-             * Google Apps Script akan membaca:
-             * e.postData.contents
+             * Tampilkan main content
              */
 
-            await fetch(
-                SCRIPT_URL,
-                {
-                    method: "POST",
+            mainContent.classList.remove("hidden");
 
-                    body:
-                        JSON.stringify(
-                            data
-                        )
-                }
+            mainContent.classList.add("show");
+
+
+            /*
+             * Cover menghilang
+             */
+
+            cover.style.transition =
+                "opacity .8s ease, visibility .8s ease";
+
+            cover.style.opacity = "0";
+
+            cover.style.visibility = "hidden";
+
+
+            setTimeout(function () {
+
+                cover.style.display = "none";
+
+            }, 850);
+
+
+            /*
+             * Body sudah membuka undangan
+             */
+
+            document.body.classList.add(
+                "invitation-open"
             );
 
 
-            statusRsvp.textContent =
-                "Terima kasih, RSVP Anda sudah terkirim. 🤍";
+            /*
+             * Bottom navigation muncul
+             */
+
+            bottomNav.classList.remove("hidden");
 
 
             /*
-             * Simpan nama RSVP supaya
-             * otomatis menjadi nama
-             * pada form Wedding Wishes.
+             * Music button muncul
              */
 
-            const wishNama =
-                document.getElementById(
-                    "wishNama"
-                );
-
-            if (wishNama) {
-
-                wishNama.value =
-                    nama;
-
-            }
+            musicButton.classList.remove("hidden");
 
 
             /*
-             * Scroll perlahan ke
-             * Wedding Wishes.
+             * Putar musik
              */
 
-            setTimeout(
-                () => {
+            if (music) {
 
-                    document
-                        .getElementById(
-                            "wishes"
-                        )
-                        .scrollIntoView({
-                            behavior:
-                                "smooth"
+                music.volume = 0.5;
+
+                const playPromise =
+                    music.play();
+
+                if (
+                    playPromise !== undefined
+                ) {
+
+                    playPromise
+                        .then(function () {
+
+                            musicButton.classList.add(
+                                "playing"
+                            );
+
+                        })
+                        .catch(function () {
+
+                            console.log(
+                                "Browser memblokir autoplay."
+                            );
+
                         });
 
-                },
-                700
-            );
+                }
+
+            }
 
 
-        } catch (error) {
+            /*
+             * Tampilkan opening
+             */
 
-            console.error(
-                error
-            );
+            setTimeout(function () {
 
-            statusRsvp.textContent =
-                "RSVP belum dapat dikirim. Silakan coba lagi.";
+                const opening =
+                    document.getElementById(
+                        "opening"
+                    );
+
+                if (opening) {
+
+                    opening.classList.add(
+                        "visible"
+                    );
+
+                }
+
+            }, 200);
+
+
+            /*
+             * Mulai observer fade-in
+             */
+
+            startFadeObserver();
 
         }
-
-
-        submitRsvp.disabled =
-            false;
-
-        submitRsvp.textContent =
-            "Kirim RSVP";
-
-    }
-);
-
-
-/* =========================================================
-   WEDDING WISHES
-========================================================= */
-
-const wishForm =
-    document.getElementById(
-        "wishForm"
-    );
-
-const wishList =
-    document.getElementById(
-        "wishList"
     );
 
 
-wishForm.addEventListener(
-    "submit",
-    (event) => {
+    /* =================================================
+       FADE IN OBSERVER
+    ================================================= */
 
-        event.preventDefault();
+    function startFadeObserver() {
 
-
-        const wishNama =
-            document.getElementById(
-                "wishNama"
-            ).value.trim();
-
-
-        const ucapan =
-            document.getElementById(
-                "ucapan"
-            ).value.trim();
+        const sections =
+            document.querySelectorAll(
+                ".fade-section"
+            );
 
 
-        if (
-            !wishNama ||
-            !ucapan
-        ) {
+        /*
+         * Kalau browser tidak mendukung
+         * IntersectionObserver
+         */
+
+        if (!("IntersectionObserver" in window)) {
+
+            sections.forEach(function (section) {
+
+                section.classList.add(
+                    "visible"
+                );
+
+            });
 
             return;
 
         }
 
 
-        /*
-         * Buat card ucapan baru.
-         */
+        const observer =
+            new IntersectionObserver(
+                function (entries) {
 
-        const card =
-            document.createElement(
-                "div"
-            );
+                    entries.forEach(
+                        function (entry) {
 
+                            if (
+                                entry.isIntersecting
+                            ) {
 
-        card.className =
-            "wish-card";
-
-
-        const title =
-            document.createElement(
-                "h4"
-            );
-
-        title.textContent =
-            wishNama;
-
-
-        const message =
-            document.createElement(
-                "p"
-            );
-
-        message.textContent =
-            ucapan;
-
-
-        card.appendChild(
-            title
-        );
-
-        card.appendChild(
-            message
-        );
-
-
-        /*
-         * Ucapan terbaru muncul
-         * paling atas.
-         */
-
-        wishList.prepend(
-            card
-        );
-
-
-        /*
-         * Reset ucapan,
-         * tetapi nama tetap.
-         */
-
-        document.getElementById(
-            "ucapan"
-        ).value = "";
-
-
-        /*
-         * Kirim juga ke Spreadsheet.
-         *
-         * Data RSVP dan ucapan
-         * tetap berada di baris
-         * yang berbeda jika user
-         * mengirim ucapan setelah RSVP.
-         *
-         * Jika ingin satu baris
-         * digabung berdasarkan nama,
-         * Apps Script perlu dibuat
-         * sedikit berbeda.
-         */
-
-        const data = {
-
-            nama:
-                wishNama,
-
-            kehadiran:
-                "Wedding Wishes",
-
-            jumlah:
-                "",
-
-            ucapan:
-                ucapan
-
-        };
-
-
-        fetch(
-            SCRIPT_URL,
-            {
-                method: "POST",
-
-                body:
-                    JSON.stringify(
-                        data
-                    )
-            }
-        )
-        .then(
-            () => {
-
-                console.log(
-                    "Wedding wishes terkirim."
-                );
-
-            }
-        )
-        .catch(
-            (error) => {
-
-                console.error(
-                    "Wedding wishes gagal dikirim:",
-                    error
-                );
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================================
-   BOTTOM NAV ACTIVE STATE
-========================================================= */
-
-const navLinks =
-    document.querySelectorAll(
-        ".bottom-nav a"
-    );
-
-
-const navSections = [];
-
-
-navLinks.forEach(
-    (link) => {
-
-        const target =
-            link.getAttribute(
-                "href"
-            );
-
-        const section =
-            document.querySelector(
-                target
-            );
-
-        if (section) {
-
-            navSections.push({
-                link:
-                    link,
-
-                section:
-                    section
-            });
-
-        }
-
-    }
-);
-
-
-const navObserver =
-    new IntersectionObserver(
-        (entries) => {
-
-            entries.forEach(
-                (entry) => {
-
-                    if (
-                        entry.isIntersecting
-                    ) {
-
-                        navSections.forEach(
-                            (item) => {
-
-                                item.link.classList.toggle(
-                                    "active",
-                                    item.section ===
-                                    entry.target
+                                entry.target.classList.add(
+                                    "visible"
                                 );
 
                             }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: 0.12,
+                    rootMargin:
+                        "0px 0px -60px 0px"
+                }
+            );
+
+
+        sections.forEach(function (section) {
+
+            observer.observe(section);
+
+        });
+
+    }
+
+
+    /* =================================================
+       MUSIC BUTTON
+    ================================================= */
+
+    musicButton.addEventListener(
+        "click",
+        function () {
+
+            if (!music) {
+                return;
+            }
+
+
+            if (music.paused) {
+
+                music.play()
+                    .then(function () {
+
+                        musicButton.classList.add(
+                            "playing"
                         );
+
+                    })
+                    .catch(function (error) {
+
+                        console.log(error);
+
+                    });
+
+            } else {
+
+                music.pause();
+
+                musicButton.classList.remove(
+                    "playing"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =================================================
+       COUNTDOWN
+    ================================================= */
+
+    const weddingDate =
+        new Date(
+            "December 28, 2026 10:00:00"
+        ).getTime();
+
+
+    function updateCountdown() {
+
+        const now =
+            new Date().getTime();
+
+        const distance =
+            weddingDate - now;
+
+
+        const days =
+            Math.floor(
+                distance /
+                (1000 * 60 * 60 * 24)
+            );
+
+        const hours =
+            Math.floor(
+                (
+                    distance %
+                    (1000 * 60 * 60 * 24)
+                ) /
+                (1000 * 60 * 60)
+            );
+
+        const minutes =
+            Math.floor(
+                (
+                    distance %
+                    (1000 * 60 * 60)
+                ) /
+                (1000 * 60)
+            );
+
+        const seconds =
+            Math.floor(
+                (
+                    distance %
+                    (1000 * 60)
+                ) /
+                1000
+            );
+
+
+        const daysEl =
+            document.getElementById("days");
+
+        const hoursEl =
+            document.getElementById("hours");
+
+        const minutesEl =
+            document.getElementById("minutes");
+
+        const secondsEl =
+            document.getElementById("seconds");
+
+
+        if (distance <= 0) {
+
+            daysEl.textContent = "00";
+            hoursEl.textContent = "00";
+            minutesEl.textContent = "00";
+            secondsEl.textContent = "00";
+
+            return;
+
+        }
+
+
+        daysEl.textContent =
+            String(days).padStart(2, "0");
+
+        hoursEl.textContent =
+            String(hours).padStart(2, "0");
+
+        minutesEl.textContent =
+            String(minutes).padStart(2, "0");
+
+        secondsEl.textContent =
+            String(seconds).padStart(2, "0");
+
+    }
+
+
+    updateCountdown();
+
+    setInterval(
+        updateCountdown,
+        1000
+    );
+
+
+    /* =================================================
+       RSVP
+    ================================================= */
+
+    const rsvpForm =
+        document.getElementById(
+            "rsvpForm"
+        );
+
+    const statusRsvp =
+        document.getElementById(
+            "statusRsvp"
+        );
+
+
+    rsvpForm.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            const nama =
+                document.getElementById(
+                    "nama"
+                ).value.trim();
+
+            const kehadiran =
+                document.getElementById(
+                    "kehadiran"
+                ).value;
+
+            const jumlah =
+                document.getElementById(
+                    "jumlah"
+                ).value;
+
+
+            if (!nama || !kehadiran) {
+
+                statusRsvp.textContent =
+                    "Mohon lengkapi data RSVP.";
+
+                return;
+
+            }
+
+
+            const submitButton =
+                rsvpForm.querySelector(
+                    "button[type='submit']"
+                );
+
+
+            submitButton.disabled =
+                true;
+
+            submitButton.textContent =
+                "Mengirim...";
+
+            statusRsvp.textContent =
+                "";
+
+
+            const data = {
+
+                nama:
+                    nama,
+
+                kehadiran:
+                    kehadiran,
+
+                jumlah:
+                    jumlah,
+
+                ucapan:
+                    ""
+
+            };
+
+
+            try {
+
+                await fetch(
+                    GOOGLE_SCRIPT_URL,
+                    {
+                        method: "POST",
+
+                        mode: "no-cors",
+
+                        headers: {
+                            "Content-Type":
+                                "text/plain;charset=utf-8"
+                        },
+
+                        body:
+                            JSON.stringify(data)
+                    }
+                );
+
+
+                statusRsvp.textContent =
+                    "Terima kasih, konfirmasi Anda sudah dikirim. 🤍";
+
+
+                rsvpForm.reset();
+
+
+                document.getElementById(
+                    "jumlah"
+                ).value = 1;
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                statusRsvp.textContent =
+                    "Terjadi kendala saat mengirim RSVP. Silakan coba lagi.";
+
+            }
+
+
+            submitButton.disabled =
+                false;
+
+            submitButton.textContent =
+                "Kirim RSVP";
+
+        }
+    );
+
+
+    /* =================================================
+       WEDDING WISHES
+       Ditampilkan langsung setelah dikirim
+    ================================================= */
+
+    const wishForm =
+        document.getElementById(
+            "wishForm"
+        );
+
+    const wishList =
+        document.getElementById(
+            "wishList"
+        );
+
+    const wishStatus =
+        document.getElementById(
+            "wishStatus"
+        );
+
+
+    wishForm.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+
+            const nama =
+                document.getElementById(
+                    "wishNama"
+                ).value.trim();
+
+            const ucapan =
+                document.getElementById(
+                    "ucapan"
+                ).value.trim();
+
+
+            if (!nama || !ucapan) {
+
+                wishStatus.textContent =
+                    "Mohon isi nama dan ucapan terlebih dahulu.";
+
+                return;
+
+            }
+
+
+            /*
+             * Buat card baru
+             */
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+            card.className =
+                "wish-card";
+
+
+            const title =
+                document.createElement(
+                    "h4"
+                );
+
+            title.textContent =
+                nama;
+
+
+            const text =
+                document.createElement(
+                    "p"
+                );
+
+            text.textContent =
+                ucapan;
+
+
+            card.appendChild(title);
+
+            card.appendChild(text);
+
+
+            /*
+             * Masukkan paling atas
+             */
+
+            wishList.prepend(card);
+
+
+            /*
+             * Bersihkan form
+             */
+
+            wishForm.reset();
+
+
+            wishStatus.textContent =
+                "Terima kasih atas ucapan dan doanya. 🤍";
+
+
+            /*
+             * Scroll sedikit ke wishes
+             */
+
+            setTimeout(function () {
+
+                card.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }, 100);
+
+
+            /*
+             * Hapus status setelah beberapa detik
+             */
+
+            setTimeout(function () {
+
+                wishStatus.textContent =
+                    "";
+
+            }, 4000);
+
+        }
+    );
+
+
+    /* =================================================
+       COPY REKENING
+    ================================================= */
+
+    const copyButtons =
+        document.querySelectorAll(
+            ".copy-account"
+        );
+
+
+    copyButtons.forEach(
+        function (button) {
+
+            button.addEventListener(
+                "click",
+                async function () {
+
+                    const account =
+                        button.dataset.account;
+
+
+                    try {
+
+                        await navigator.clipboard.writeText(
+                            account
+                        );
+
+                        const originalText =
+                            button.textContent;
+
+                        button.textContent =
+                            "Berhasil Disalin ✓";
+
+
+                        setTimeout(
+                            function () {
+
+                                button.textContent =
+                                    originalText;
+
+                            },
+                            1800
+                        );
+
+                    } catch (error) {
+
+                        /*
+                         * Fallback browser lama
+                         */
+
+                        const temp =
+                            document.createElement(
+                                "textarea"
+                            );
+
+                        temp.value =
+                            account;
+
+                        document.body.appendChild(
+                            temp
+                        );
+
+                        temp.select();
+
+                        document.execCommand(
+                            "copy"
+                        );
+
+                        document.body.removeChild(
+                            temp
+                        );
+
+                        button.textContent =
+                            "Berhasil Disalin ✓";
 
                     }
 
                 }
             );
 
-        },
-        {
-            threshold: 0.45
         }
     );
 
 
-navSections.forEach(
-    (item) => {
+    /* =================================================
+       BOTTOM NAV ACTIVE STATE
+    ================================================= */
 
-        navObserver.observe(
-            item.section
+    const navLinks =
+        document.querySelectorAll(
+            ".bottom-nav a"
+        );
+
+
+    const navSections =
+        document.querySelectorAll(
+            "#opening, #couple, #story, #gallery, #rsvp"
+        );
+
+
+    if ("IntersectionObserver" in window) {
+
+        const navObserver =
+            new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(
+                        function (entry) {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                navLinks.forEach(
+                                    function (link) {
+
+                                        link.classList.remove(
+                                            "active"
+                                        );
+
+                                    }
+                                );
+
+
+                                const activeLink =
+                                    document.querySelector(
+                                        '.bottom-nav a[href="#' +
+                                        entry.target.id +
+                                        '"]'
+                                    );
+
+
+                                if (activeLink) {
+
+                                    activeLink.classList.add(
+                                        "active"
+                                    );
+
+                                }
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: 0.4
+                }
+            );
+
+
+        navSections.forEach(
+            function (section) {
+
+                navObserver.observe(
+                    section
+                );
+
+            }
         );
 
     }
-);
 
 
-/* =========================================================
-   INITIALIZE
-========================================================= */
-
-getGuestName();
-
-
-/*
- * Pastikan cover tetap menjadi
- * tampilan awal.
- */
-
-if (mainContent) {
-
-    mainContent.classList.remove(
-        "main-visible"
-    );
-
-}
+});
