@@ -1101,7 +1101,35 @@ a {
     line-height: 1.7;
 }
 
+/* =========================================================
+   WEDDING WISHES
+========================================================= */
 
+.wish-list{
+    margin-top:30px;
+}
+
+.wish-card{
+    background:#fff;
+    border:1px solid rgba(0,0,0,.08);
+    border-radius:20px;
+    padding:18px;
+    margin-bottom:15px;
+    text-align:left;
+    box-shadow:0 5px 15px rgba(0,0,0,.05);
+}
+
+.wish-card h4{
+    margin:0 0 8px;
+    font-size:16px;
+    color:#111;
+}
+
+.wish-card p{
+    margin:0;
+    line-height:1.7;
+    color:#555;
+}
 /* =========================================================
    GIFT
 ========================================================= */
