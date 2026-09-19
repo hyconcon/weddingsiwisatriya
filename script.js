@@ -1,330 +1,999 @@
-/* =========================
-   NAMA TAMU DARI URL
-========================= */
+/* =====================================================
+   CONFIGURATION
+===================================================== */
 
-const params = new URLSearchParams(window.location.search);
-const guest = params.get("to");
+// URL Google Apps Script Anda
+const GOOGLE_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbzc8ypaEaKywriXYzc318iE6diOzxJNCUBs3n2uEkf8pRzc8-9eRv5ClbY5zk-sRFKY/exec";
 
-if (guest) {
-    document.getElementById("guest").innerText =
-        decodeURIComponent(guest);
+
+/* =====================================================
+   DOM READY
+===================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    initGuestName();
+
+    initInvitation();
+
+    initMusic();
+
+    initScrollReveal();
+
+    initCoupleSlider();
+
+    initCountdown();
+
+    initWeddingWishes();
+
+    initRSVP();
+
+    initCopyAccount();
+
+});
+
+
+/* =====================================================
+   GUEST NAME
+   ?to=Nama%20Tamu
+===================================================== */
+
+function initGuestName(){
+
+    const guestElement =
+        document.getElementById("guest");
+
+    if(!guestElement){
+        return;
+    }
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const guestName =
+        params.get("to");
+
+    if(guestName){
+
+        guestElement.textContent =
+            decodeURIComponent(guestName)
+            .replace(/\+/g, " ");
+
+    }
+
 }
 
-/* =========================
-   BUKA UNDANGAN
-========================= */
 
-const openBtn = document.getElementById("openInvitation");
-const cover = document.getElementById("cover");
-const main = document.getElementById("mainContent");
-const music = document.getElementById("music");
+/* =====================================================
+   OPEN INVITATION
+===================================================== */
 
-openBtn.addEventListener("click", () => {
+function initInvitation(){
 
-    cover.style.display = "none";
-    main.style.display = "block";
+    const button =
+        document.getElementById(
+            "openInvitation"
+        );
 
-    music.play();
+    const cover =
+        document.getElementById("cover");
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+    const mainContent =
+        document.getElementById(
+            "mainContent"
+        );
+
+    if(!button || !cover){
+        return;
+    }
+
+    document.body.classList.add("locked");
+
+    if(mainContent){
+        mainContent.style.visibility =
+            "hidden";
+    }
+
+    button.addEventListener("click", () => {
+
+        cover.classList.add("hidden");
+
+        document.body.classList.remove(
+            "locked"
+        );
+
+        if(mainContent){
+
+            mainContent.style.visibility =
+                "visible";
+
+        }
+
+        playMusic();
+
+        setTimeout(() => {
+
+            const opening =
+                document.getElementById(
+                    "opening"
+                );
+
+            if(opening){
+
+                opening.scrollIntoView({
+                    behavior:"smooth"
+                });
+
+            }
+
+        }, 500);
+
     });
 
-});
+}
 
-/* =========================
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+let musicStarted = false;
+
+function initMusic(){
+
+    const music =
+        document.getElementById("music");
+
+    const musicButton =
+        document.getElementById(
+            "musicButton"
+        );
+
+    if(!music){
+        return;
+    }
+
+    if(musicButton){
+
+        musicButton.addEventListener(
+            "click",
+            () => {
+
+                if(music.paused){
+
+                    music.play()
+                        .then(() => {
+
+                            musicButton
+                                .classList
+                                .add("playing");
+
+                        })
+                        .catch(() => {});
+
+                }else{
+
+                    music.pause();
+
+                    musicButton
+                        .classList
+                        .remove("playing");
+
+                }
+
+            }
+        );
+
+    }
+
+}
+
+function playMusic(){
+
+    const music =
+        document.getElementById("music");
+
+    const musicButton =
+        document.getElementById(
+            "musicButton"
+        );
+
+    if(!music){
+        return;
+    }
+
+    music.play()
+        .then(() => {
+
+            musicStarted = true;
+
+            if(musicButton){
+
+                musicButton
+                    .classList
+                    .add("playing");
+
+            }
+
+        })
+        .catch(() => {
+
+            // Browser dapat menolak autoplay.
+            // Musik tetap dapat dimainkan
+            // melalui tombol musik.
+
+        });
+
+}
+
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+function initScrollReveal(){
+
+    const reveals =
+        document.querySelectorAll(
+            ".reveal"
+        );
+
+    if(!reveals.length){
+        return;
+    }
+
+    const observer =
+        new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach(entry => {
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target
+                            .classList
+                            .add("active");
+
+                    }
+
+                });
+
+            },
+            {
+                threshold:.12,
+                rootMargin:"0px 0px -60px 0px"
+            }
+        );
+
+    reveals.forEach(section => {
+
+        observer.observe(section);
+
+    });
+
+}
+
+
+/* =====================================================
+   COUPLE SLIDER
+===================================================== */
+
+function initCoupleSlider(){
+
+    const slides =
+        document.querySelectorAll(
+            ".couple-slide"
+        );
+
+    const dots =
+        document.querySelectorAll(
+            ".slider-dot"
+        );
+
+    if(!slides.length){
+        return;
+    }
+
+    let currentSlide = 0;
+
+    function showSlide(index){
+
+        slides.forEach(
+            (slide, i) => {
+
+                slide.classList.toggle(
+                    "active",
+                    i === index
+                );
+
+            }
+        );
+
+        dots.forEach(
+            (dot, i) => {
+
+                dot.classList.toggle(
+                    "active",
+                    i === index
+                );
+
+            }
+        );
+
+        currentSlide = index;
+
+    }
+
+    dots.forEach(
+        (dot, index) => {
+
+            dot.addEventListener(
+                "click",
+                () => {
+
+                    showSlide(index);
+
+                }
+            );
+
+        }
+    );
+
+    setInterval(() => {
+
+        currentSlide++;
+
+        if(
+            currentSlide >=
+            slides.length
+        ){
+
+            currentSlide = 0;
+
+        }
+
+        showSlide(currentSlide);
+
+    }, 5000);
+
+}
+
+
+/* =====================================================
    COUNTDOWN
-========================= */
+===================================================== */
 
-const weddingDate =
-new Date("December 28, 2026 10:00:00").getTime();
+function initCountdown(){
 
-setInterval(() => {
+    const targetDate =
+        new Date(
+            "2026-12-28T10:00:00+07:00"
+        ).getTime();
 
-    const now = new Date().getTime();
 
-    const distance =
-    weddingDate - now;
+    function updateCountdown(){
 
-    const days =
-    Math.floor(distance /
-    (1000 * 60 * 60 * 24));
+        const now =
+            new Date().getTime();
 
-    const hours =
-    Math.floor(
-    (distance %
-    (1000 * 60 * 60 * 24))
-    /
-    (1000 * 60 * 60));
+        const difference =
+            targetDate - now;
 
-    const minutes =
-    Math.floor(
-    (distance %
-    (1000 * 60 * 60))
-    /
-    (1000 * 60));
 
-    const seconds =
-    Math.floor(
-    (distance %
-    (1000 * 60))
-    /
-    1000);
+        const days =
+            document.getElementById("days");
 
-    const d = document.getElementById("days");
-    const h = document.getElementById("hours");
-    const m = document.getElementById("minutes");
-    const s = document.getElementById("seconds");
+        const hours =
+            document.getElementById("hours");
 
-    if (d) d.innerText = days;
-    if (h) h.innerText = hours;
-    if (m) m.innerText = minutes;
-    if (s) s.innerText = seconds;
+        const minutes =
+            document.getElementById("minutes");
 
-}, 1000);
+        const seconds =
+            document.getElementById("seconds");
 
-/* =========================
-   HERO SLIDESHOW
-========================= */
 
-const heroImages = [
-    "images/couple-main.jpg",
-    "images/photo1.jpg",
-    "images/photo2.jpg",
-    "images/photo3.jpg",
-    "images/photo4.jpg",
-    "images/photo5.jpg",
-    "images/photo6.jpg"
-];
+        if(difference <= 0){
 
-const heroPhoto =
-document.getElementById("heroPhoto");
+            if(days) days.textContent = "0";
+            if(hours) hours.textContent = "0";
+            if(minutes) minutes.textContent = "0";
+            if(seconds) seconds.textContent = "0";
 
-let heroIndex = 0;
+            return;
 
-if(heroPhoto){
+        }
 
-setInterval(() => {
 
-heroIndex++;
+        const dayValue =
+            Math.floor(
+                difference /
+                (1000 * 60 * 60 * 24)
+            );
 
-if(heroIndex >= heroImages.length){
-heroIndex = 0;
-}
+        const hourValue =
+            Math.floor(
+                (difference /
+                (1000 * 60 * 60)) %
+                24
+            );
 
-heroPhoto.src =
-heroImages[heroIndex];
+        const minuteValue =
+            Math.floor(
+                (difference /
+                (1000 * 60)) %
+                60
+            );
 
-},5000);
+        const secondValue =
+            Math.floor(
+                (difference /
+                1000) %
+                60
+            );
 
-}
 
-/* =========================
-   BRIDE SLIDESHOW
-========================= */
+        if(days){
+            days.textContent =
+                dayValue;
+        }
 
-const bridePhotos = [
-    "images/siwi.jpg",
-    "images/siwi2.jpg",
-    "images/siwi3.jpg"
-];
+        if(hours){
+            hours.textContent =
+                String(hourValue)
+                    .padStart(2,"0");
+        }
 
-const brideImage =
-document.getElementById("brideImage");
+        if(minutes){
+            minutes.textContent =
+                String(minuteValue)
+                    .padStart(2,"0");
+        }
 
-let brideIndex = 0;
+        if(seconds){
+            seconds.textContent =
+                String(secondValue)
+                    .padStart(2,"0");
+        }
 
-if(brideImage){
+    }
 
-setInterval(() => {
 
-brideIndex++;
+    updateCountdown();
 
-if(brideIndex >= bridePhotos.length){
-brideIndex = 0;
-}
-
-brideImage.src =
-bridePhotos[brideIndex];
-
-},4000);
+    setInterval(
+        updateCountdown,
+        1000
+    );
 
 }
 
-/* =========================
-   GROOM SLIDESHOW
-========================= */
 
-const groomPhotos = [
-    "images/satriya.jpg",
-    "images/satriya2.jpg",
-    "images/satriya3.jpg"
-];
-
-const groomImage =
-document.getElementById("groomImage");
-
-let groomIndex = 0;
-
-if(groomImage){
-
-setInterval(() => {
-
-groomIndex++;
-
-if(groomIndex >= groomPhotos.length){
-groomIndex = 0;
-}
-
-groomImage.src =
-groomPhotos[groomIndex];
-
-},4000);
-
-}
-
-/* =========================
-   FADE IN SCROLL
-========================= */
-
-const reveals =
-document.querySelectorAll(".reveal");
-
-window.addEventListener("scroll", () => {
-
-reveals.forEach((item)=>{
-
-const top =
-item.getBoundingClientRect().top;
-
-const visible = 120;
-
-if(top < window.innerHeight - visible){
-item.classList.add("active");
-}
-
-});
-
-});
-
-/* =========================
-   RSVP + GOOGLE SHEET
-========================= */
-
-const scriptURL =
-"https://script.google.com/macros/s/AKfycbzc8ypaEaKywriXYzc318iE6diOzxJNCUBs3n2uEkf8pRzc8-9eRv5ClbY5zk-sRFKY/exec";
-
-const form =
-document.getElementById("rsvpForm");
-
-if(form){
-
-form.addEventListener("submit",
-async function(e){
-
-e.preventDefault();
-
-const nama =
-document.getElementById("nama").value;
-
-const kehadiran =
-document.getElementById("kehadiran").value;
-
-const jumlah =
-document.getElementById("jumlah").value;
-
-const ucapan =
-document.getElementById("ucapan").value;
-
-const status =
-document.getElementById("statusRsvp");
-
-status.innerHTML =
-"Sedang mengirim...";
-
-try{
-
-await fetch(scriptURL,{
-
-method:"POST",
-
-body:JSON.stringify({
-
-nama:nama,
-kehadiran:kehadiran,
-jumlah:jumlah,
-ucapan:ucapan
-
-})
-
-});
-
-status.innerHTML =
-"Terima kasih, RSVP berhasil dikirim ❤️";
-
-addWish(
-nama,
-ucapan
-);
-
-form.reset();
-
-}catch(error){
-
-status.innerHTML =
-"Gagal mengirim RSVP";
-
-}
-
-});
-
-}
-
-/* =========================
+/* =====================================================
    WEDDING WISHES
-========================= */
+===================================================== */
 
-function addWish(nama, ucapan){
+function initWeddingWishes(){
 
-if(!ucapan) return;
+    const form =
+        document.getElementById(
+            "wishForm"
+        );
 
-const list =
-document.getElementById("wishList");
+    const nama =
+        document.getElementById(
+            "wishNama"
+        );
 
-if(!list) return;
+    const ucapan =
+        document.getElementById(
+            "wishUcapan"
+        );
 
-const card =
-document.createElement("div");
+    const charCount =
+        document.getElementById(
+            "charCount"
+        );
 
-card.className =
-"wish-card";
+    const wishList =
+        document.getElementById(
+            "wishList"
+        );
 
-card.innerHTML = `
-<h4>${nama}</h4>
-<p>${ucapan}</p>
-`;
+    const wishCount =
+        document.getElementById(
+            "wishCount"
+        );
 
-list.prepend(card);
+    const status =
+        document.getElementById(
+            "wishStatus"
+        );
+
+
+    if(!form){
+        return;
+    }
+
+
+    /* -----------------------------------------
+       CHARACTER COUNTER
+    ----------------------------------------- */
+
+    if(ucapan && charCount){
+
+        ucapan.addEventListener(
+            "input",
+            () => {
+
+                charCount.textContent =
+                    ucapan.value.length;
+
+            }
+        );
+
+    }
+
+
+    /* -----------------------------------------
+       LOAD LOCAL WISHES
+    ----------------------------------------- */
+
+    let wishes = [];
+
+    try{
+
+        wishes =
+            JSON.parse(
+                localStorage.getItem(
+                    "siwiSatriyaWishes"
+                )
+            ) || [];
+
+    }catch(error){
+
+        wishes = [];
+
+    }
+
+
+    function renderWishes(){
+
+        if(!wishList){
+            return;
+        }
+
+        wishList.innerHTML = "";
+
+
+        if(!wishes.length){
+
+            wishList.innerHTML = `
+                <div class="wish-card">
+                    <p>
+                        Belum ada ucapan.
+                        Jadilah yang pertama
+                        memberikan ucapan dan doa.
+                    </p>
+                </div>
+            `;
+
+        }else{
+
+            wishes.forEach(
+                wish => {
+
+                    const card =
+                        document.createElement(
+                            "div"
+                        );
+
+                    card.className =
+                        "wish-card";
+
+
+                    const title =
+                        document.createElement(
+                            "h4"
+                        );
+
+                    title.textContent =
+                        wish.nama;
+
+
+                    const message =
+                        document.createElement(
+                            "p"
+                        );
+
+                    message.textContent =
+                        wish.ucapan;
+
+
+                    card.appendChild(title);
+
+                    card.appendChild(message);
+
+                    wishList.appendChild(card);
+
+                }
+            );
+
+        }
+
+
+        if(wishCount){
+
+            wishCount.textContent =
+                wishes.length;
+
+        }
+
+    }
+
+
+    renderWishes();
+
+
+    /* -----------------------------------------
+       SUBMIT WISH
+    ----------------------------------------- */
+
+    form.addEventListener(
+        "submit",
+        async (event) => {
+
+            event.preventDefault();
+
+
+            const namaValue =
+                nama.value.trim();
+
+            const ucapanValue =
+                ucapan.value.trim();
+
+
+            if(
+                !namaValue ||
+                !ucapanValue
+            ){
+
+                return;
+
+            }
+
+
+            const newWish = {
+
+                nama:
+                    namaValue,
+
+                ucapan:
+                    ucapanValue
+
+            };
+
+
+            /* Tampilkan langsung */
+
+            wishes.unshift(
+                newWish
+            );
+
+
+            localStorage.setItem(
+                "siwiSatriyaWishes",
+                JSON.stringify(wishes)
+            );
+
+
+            renderWishes();
+
+
+            /* Kosongkan form */
+
+            form.reset();
+
+            if(charCount){
+
+                charCount.textContent =
+                    "0";
+
+            }
+
+
+            if(status){
+
+                status.textContent =
+                    "Ucapan berhasil ditambahkan ♥";
+
+            }
+
+
+            /* ---------------------------------
+               SIMPAN KE GOOGLE SHEET
+               --------------------------------- */
+
+            try{
+
+                await fetch(
+                    GOOGLE_SCRIPT_URL,
+                    {
+                        method:"POST",
+
+                        headers:{
+                            "Content-Type":
+                                "text/plain;charset=utf-8"
+                        },
+
+                        body:JSON.stringify({
+
+                            nama:
+                                namaValue,
+
+                            kehadiran:
+                                "Wedding Wishes",
+
+                            jumlah:
+                                0,
+
+                            ucapan:
+                                ucapanValue
+
+                        })
+
+                    }
+                );
+
+            }catch(error){
+
+                console.log(
+                    "Wedding wishes disimpan lokal."
+                );
+
+            }
+
+            setTimeout(() => {
+
+                if(status){
+
+                    status.textContent =
+                        "";
+
+                }
+
+            }, 3000);
+
+        }
+    );
 
 }
 
-/* =========================
-   AUTO SHOW SECTION
-========================= */
 
-window.addEventListener("load",()=>{
+/* =====================================================
+   RSVP
+===================================================== */
 
-document.querySelectorAll(".reveal")
-.forEach(item=>{
+function initRSVP(){
 
-const top =
-item.getBoundingClientRect().top;
+    const form =
+        document.getElementById(
+            "rsvpForm"
+        );
 
-if(top < window.innerHeight){
-item.classList.add("active");
+    if(!form){
+        return;
+    }
+
+
+    const nama =
+        document.getElementById(
+            "nama"
+        );
+
+    const kehadiran =
+        document.getElementById(
+            "kehadiran"
+        );
+
+    const jumlah =
+        document.getElementById(
+            "jumlah"
+        );
+
+    const status =
+        document.getElementById(
+            "statusRsvp"
+        );
+
+
+    form.addEventListener(
+        "submit",
+        async (event) => {
+
+            event.preventDefault();
+
+
+            const namaValue =
+                nama.value.trim();
+
+            const kehadiranValue =
+                kehadiran.value;
+
+            const jumlahValue =
+                Number(jumlah.value);
+
+
+            if(
+                !namaValue ||
+                !kehadiranValue ||
+                !jumlahValue
+            ){
+
+                if(status){
+
+                    status.textContent =
+                        "Mohon lengkapi data RSVP.";
+
+                }
+
+                return;
+
+            }
+
+
+            if(status){
+
+                status.textContent =
+                    "Mengirim RSVP...";
+            }
+
+
+            try{
+
+                const response =
+                    await fetch(
+                        GOOGLE_SCRIPT_URL,
+                        {
+                            method:"POST",
+
+                            headers:{
+                                "Content-Type":
+                                    "text/plain;charset=utf-8"
+                            },
+
+                            body:
+                                JSON.stringify({
+
+                                    nama:
+                                        namaValue,
+
+                                    kehadiran:
+                                        kehadiranValue,
+
+                                    jumlah:
+                                        jumlahValue,
+
+                                    ucapan:
+                                        ""
+
+                                })
+
+                        }
+                    );
+
+
+                if(
+                    response.ok
+                ){
+
+                    if(status){
+
+                        status.textContent =
+                            "RSVP berhasil dikirim. Terima kasih ♥";
+
+                    }
+
+                    form.reset();
+
+                    jumlah.value = "1";
+
+                }else{
+
+                    throw new Error(
+                        "Server error"
+                    );
+
+                }
+
+            }catch(error){
+
+                console.error(error);
+
+                if(status){
+
+                    status.textContent =
+                        "RSVP gagal dikirim. Silakan coba lagi.";
+
+                }
+
+            }
+
+
+            setTimeout(() => {
+
+                if(status){
+
+                    status.textContent =
+                        "";
+
+                }
+
+            }, 5000);
+
+        }
+    );
+
 }
 
-});
 
-});
+/* =====================================================
+   COPY BANK ACCOUNT
+===================================================== */
+
+function initCopyAccount(){
+
+    const buttons =
+        document.querySelectorAll(
+            ".copy-account"
+        );
+
+
+    buttons.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            async () => {
+
+                const account =
+                    button.dataset.account;
+
+                try{
+
+                    await navigator.clipboard
+                        .writeText(account);
+
+                    const original =
+                        button.textContent;
+
+                    button.textContent =
+                        "Berhasil Disalin ✓";
+
+
+                    setTimeout(() => {
+
+                        button.textContent =
+                            original;
+
+                    }, 2000);
+
+                }catch(error){
+
+                    alert(
+                        "Nomor rekening: "
+                        + account
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+}
