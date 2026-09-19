@@ -703,171 +703,142 @@ rsvpForm.addEventListener(
 ========================================================= */
 
 const wishForm =
-    document.getElementById(
-        "wishForm"
-    );
+document.getElementById("wishForm");
 
 const wishList =
-    document.getElementById(
-        "wishList"
-    );
+document.getElementById("wishList");
 
 
-wishForm.addEventListener(
-    "submit",
-    (event) => {
+/* ==========================
+   LOAD WISHES FROM SHEET
+========================== */
 
-        event.preventDefault();
+async function loadWishes(){
 
+    if(!wishList) return;
 
-        const wishNama =
-            document.getElementById(
-                "wishNama"
-            ).value.trim();
+    try{
 
+        const response =
+        await fetch(SCRIPT_URL);
 
-        const ucapan =
-            document.getElementById(
-                "ucapan"
-            ).value.trim();
+        const data =
+        await response.json();
 
+        wishList.innerHTML = "";
 
-        if (
-            !wishNama ||
-            !ucapan
-        ) {
+        data.reverse().forEach(item=>{
 
-            return;
+            if(!item.ucapan) return;
 
-        }
+            const card =
+            document.createElement("div");
 
-
-        /*
-         * Buat card ucapan baru.
-         */
-
-        const card =
-            document.createElement(
-                "div"
-            );
-
-
-        card.className =
+            card.className =
             "wish-card";
 
+            card.innerHTML = `
+                <h4>${item.nama || "Tamu"}</h4>
+                <p>${item.ucapan}</p>
+            `;
 
-        const title =
-            document.createElement(
-                "h4"
-            );
+            wishList.appendChild(card);
 
-        title.textContent =
-            wishNama;
+        });
 
+    }catch(error){
 
-        const message =
-            document.createElement(
-                "p"
-            );
-
-        message.textContent =
-            ucapan;
-
-
-        card.appendChild(
-            title
+        console.error(
+            "Gagal memuat wishes:",
+            error
         );
 
-        card.appendChild(
-            message
-        );
+    }
+
+}
 
 
-        /*
-         * Ucapan terbaru muncul
-         * paling atas.
-         */
+/* ==========================
+   SUBMIT WISH
+========================== */
 
-        wishList.prepend(
-            card
-        );
+if(wishForm){
 
+    wishForm.addEventListener(
+        "submit",
+        async (event)=>{
 
-        /*
-         * Reset ucapan,
-         * tetapi nama tetap.
-         */
+            event.preventDefault();
 
-        document.getElementById(
-            "ucapan"
-        ).value = "";
+            const wishNama =
+            document
+            .getElementById("wishNama")
+            .value
+            .trim();
 
+            const ucapan =
+            document
+            .getElementById("ucapan")
+            .value
+            .trim();
 
-        /*
-         * Kirim juga ke Spreadsheet.
-         *
-         * Data RSVP dan ucapan
-         * tetap berada di baris
-         * yang berbeda jika user
-         * mengirim ucapan setelah RSVP.
-         *
-         * Jika ingin satu baris
-         * digabung berdasarkan nama,
-         * Apps Script perlu dibuat
-         * sedikit berbeda.
-         */
-
-        const data = {
-
-            nama:
-                wishNama,
-
-            kehadiran:
-                "Wedding Wishes",
-
-            jumlah:
-                "",
-
-            ucapan:
-                ucapan
-
-        };
-
-
-        fetch(
-            SCRIPT_URL,
-            {
-                method: "POST",
-
-                body:
-                    JSON.stringify(
-                        data
-                    )
+            if(
+                !wishNama ||
+                !ucapan
+            ){
+                return;
             }
-        )
-        .then(
-            () => {
 
-                console.log(
-                    "Wedding wishes terkirim."
+            try{
+
+                await fetch(
+                    SCRIPT_URL,
+                    {
+                        method:"POST",
+
+                        body:JSON.stringify({
+
+                            nama:wishNama,
+
+                            kehadiran:
+                            "Wedding Wishes",
+
+                            jumlah:"",
+
+                            ucapan:ucapan
+
+                        })
+                    }
                 );
 
+                document
+                .getElementById("ucapan")
+                .value = "";
+
+                await loadWishes();
+
             }
-        )
-        .catch(
-            (error) => {
+
+            catch(error){
 
                 console.error(
-                    "Wedding wishes gagal dikirim:",
+                    "Gagal mengirim wishes:",
                     error
                 );
 
             }
-        );
 
-    }
-);
+        }
+    );
 
+}
+
+
+/* ==========================
+   INITIAL LOAD
+========================== */
+
+loadWishes();
 
 /* =========================================================
    BOTTOM NAV ACTIVE STATE
