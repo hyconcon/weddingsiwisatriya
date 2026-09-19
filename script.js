@@ -1,15 +1,12 @@
-/* ==========================
-   CONFIG
-========================== */
-
-const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbzc8ypaEaKywriXYzc318iE6diOzxJNCUBs3n2uEkf8pRzc8-9eRv5ClbY5zk-sRFKY/exec";
-
-/* ==========================
-   COVER + OPEN INVITATION
-========================== */
+/* =========================
+   LOCK PAGE
+========================= */
 
 document.body.classList.add("lock");
+
+/* =========================
+   ELEMENTS
+========================= */
 
 const cover =
 document.getElementById("cover");
@@ -17,33 +14,15 @@ document.getElementById("cover");
 const mainContent =
 document.getElementById("mainContent");
 
-const openButton =
+const openInvitation =
 document.getElementById("openInvitation");
 
 const music =
 document.getElementById("music");
 
-openButton.addEventListener("click", () => {
-
-    cover.classList.add("hide");
-
-    document.body.classList.remove("lock");
-
-    mainContent.style.display = "block";
-
-    music.play().catch(() => {});
-
-    setTimeout(() => {
-
-        cover.style.display = "none";
-
-    }, 1000);
-
-});
-
-/* ==========================
-   NAMA TAMU
-========================== */
+/* =========================
+   GUEST NAME
+========================= */
 
 const params =
 new URLSearchParams(window.location.search);
@@ -51,21 +30,53 @@ new URLSearchParams(window.location.search);
 const guest =
 params.get("to");
 
-if (guest) {
+if(guest){
 
-    document.getElementById("guestName").innerText =
-    decodeURIComponent(guest);
+    const guestElement =
+    document.getElementById("guest");
+
+    if(guestElement){
+
+        guestElement.innerText =
+        decodeURIComponent(guest);
+
+    }
 
 }
 
-/* ==========================
+/* =========================
+   OPEN INVITATION
+========================= */
+
+openInvitation.addEventListener(
+"click",
+function(){
+
+    mainContent.style.display = "block";
+
+    document.body.classList.remove("lock");
+
+    music.play().catch(()=>{});
+
+    cover.classList.add("hide");
+
+    setTimeout(()=>{
+
+        cover.style.display="none";
+
+    },1000);
+
+}
+);
+
+/* =========================
    FADE IN SECTION
-========================== */
+========================= */
 
-const sections =
-document.querySelectorAll(".fade-section");
+const reveals =
+document.querySelectorAll(".reveal");
 
-const observer =
+const revealObserver =
 new IntersectionObserver(
 
 (entries)=>{
@@ -74,7 +85,7 @@ entries.forEach(entry=>{
 
 if(entry.isIntersecting){
 
-entry.target.classList.add("show");
+entry.target.classList.add("active");
 
 }
 
@@ -88,18 +99,20 @@ threshold:0.15
 
 );
 
-sections.forEach(section=>{
+reveals.forEach(item=>{
 
-observer.observe(section);
+revealObserver.observe(item);
 
 });
 
-/* ==========================
+/* =========================
    COUNTDOWN
-========================== */
+========================= */
 
-const weddingDate =
-new Date("December 28, 2026 10:00:00").getTime();
+const targetDate =
+new Date(
+"December 28, 2026 10:00:00"
+).getTime();
 
 function updateCountdown(){
 
@@ -107,48 +120,33 @@ const now =
 new Date().getTime();
 
 const distance =
-weddingDate - now;
+targetDate - now;
 
-if(distance < 0){
+if(distance < 0) return;
 
-return;
-}
+document.getElementById("days").innerText =
+Math.floor(distance/(1000*60*60*24));
 
-const days =
-Math.floor(distance / (1000*60*60*24));
-
-const hours =
+document.getElementById("hours").innerText =
 Math.floor(
-(distance % (1000*60*60*24))
+(distance%(1000*60*60*24))
 /
 (1000*60*60)
 );
 
-const minutes =
+document.getElementById("minutes").innerText =
 Math.floor(
-(distance % (1000*60*60))
+(distance%(1000*60*60))
 /
 (1000*60)
 );
 
-const seconds =
+document.getElementById("seconds").innerText =
 Math.floor(
-(distance % (1000*60))
+(distance%(1000*60))
 /
 1000
 );
-
-document.getElementById("days").innerText =
-days;
-
-document.getElementById("hours").innerText =
-hours;
-
-document.getElementById("minutes").innerText =
-minutes;
-
-document.getElementById("seconds").innerText =
-seconds;
 
 }
 
@@ -159,102 +157,76 @@ updateCountdown,
 1000
 );
 
-/* ==========================
+/* =========================
    COUPLE SLIDER
-========================== */
+========================= */
 
-const coupleCards =
-document.querySelectorAll(".couple-card");
+const couples = [
 
-let coupleIndex = 0;
+{
+role:"THE BRIDE",
+name:"Margareta Septa Prima Siwi",
+parents:"Putri dari<br>Bapak Wasikin &<br>Ibu Kristiyaningsih",
+photo:"images/siwi.jpg"
+},
 
-function rotateCouple(){
-
-coupleCards.forEach(card=>{
-
-card.classList.remove("active");
-
-});
-
-coupleIndex++;
-
-if(coupleIndex >= coupleCards.length){
-
-coupleIndex = 0;
-
+{
+role:"THE GROOM",
+name:"Ignatius Satriya Bagus Pradana",
+parents:"Putra dari<br>Bapak Arinto Subandoko Vinc &<br>Ibu Theresia Maria Dwi Aryani",
+photo:"images/satriya.jpg"
 }
 
-coupleCards[coupleIndex]
+];
+
+let currentCouple = 0;
+
+function updateCouple(){
+
+document.getElementById("coupleRole")
+.innerHTML =
+couples[currentCouple].role;
+
+document.getElementById("coupleName")
+.innerHTML =
+couples[currentCouple].name;
+
+document.getElementById("coupleParents")
+.innerHTML =
+couples[currentCouple].parents;
+
+document.getElementById("couplePhoto")
+.src =
+couples[currentCouple].photo;
+
+document
+.querySelectorAll(".couple-dot")
+.forEach(dot=>dot.classList.remove("active"));
+
+document
+.querySelectorAll(".couple-dot")
+[currentCouple]
 .classList.add("active");
 
 }
 
-setInterval(
-rotateCouple,
-5000
-);
+setInterval(()=>{
 
-/* ==========================
-   RSVP FORM
-========================== */
+currentCouple++;
 
-const rsvpForm =
-document.getElementById("rsvpForm");
+if(currentCouple>=couples.length){
 
-if(rsvpForm){
-
-rsvpForm.addEventListener(
-"submit",
-async function(e){
-
-e.preventDefault();
-
-const nama =
-document.getElementById("nama").value;
-
-const kehadiran =
-document.getElementById("kehadiran").value;
-
-const jumlah =
-document.getElementById("jumlah").value;
-
-const payload = {
-
-nama,
-kehadiran,
-jumlah,
-ucapan:""
-
-};
-
-try{
-
-await fetch(
-SCRIPT_URL,
-{
-method:"POST",
-body:JSON.stringify(payload)
-}
-);
-
-document.getElementById("statusRsvp").innerHTML =
-"Terima kasih atas konfirmasinya 🤍";
-
-rsvpForm.reset();
-
-}catch(error){
-
-document.getElementById("statusRsvp").innerHTML =
-"Gagal mengirim RSVP";
+currentCouple=0;
 
 }
 
-});
-}
+updateCouple();
 
-/* ==========================
-   WEDDING WISHES
-========================== */
+},5000);
+
+/* =========================
+   WISH FORM
+========================= */
 
 const wishForm =
 document.getElementById("wishForm");
@@ -263,23 +235,23 @@ if(wishForm){
 
 wishForm.addEventListener(
 "submit",
-async function(e){
+function(e){
 
 e.preventDefault();
 
 const nama =
-document.getElementById("wishName").value;
+document.getElementById("wishNama").value;
 
 const ucapan =
-document.getElementById("wishMessage").value;
+document.getElementById("ucapan").value;
 
-const wishCard =
+const card =
 document.createElement("div");
 
-wishCard.className =
+card.className =
 "wish-card";
 
-wishCard.innerHTML = `
+card.innerHTML=`
 
 <h4>${nama}</h4>
 <p>${ucapan}</p>
@@ -288,79 +260,11 @@ wishCard.innerHTML = `
 
 document
 .getElementById("wishList")
-.prepend(wishCard);
-
-const payload = {
-
-nama,
-kehadiran:"",
-jumlah:"",
-ucapan
-
-};
-
-try{
-
-await fetch(
-SCRIPT_URL,
-{
-method:"POST",
-body:JSON.stringify(payload)
-}
-);
-
-}catch(error){
-
-console.log(error);
-
-}
+.prepend(card);
 
 wishForm.reset();
 
-});
 }
-
-/* ==========================
-   BOTTOM NAV ACTIVE
-========================== */
-
-const navLinks =
-document.querySelectorAll(".bottom-nav a");
-
-window.addEventListener(
-"scroll",
-()=>{
-
-let current = "";
-
-document
-.querySelectorAll("section")
-.forEach(section=>{
-
-const top =
-section.offsetTop - 150;
-
-if(window.scrollY >= top){
-
-current = section.id;
+);
 
 }
-
-});
-
-navLinks.forEach(link=>{
-
-link.classList.remove("active");
-
-if(
-link.getAttribute("href")
-=== "#" + current
-){
-
-link.classList.add("active");
-
-}
-
-});
-
-});
