@@ -145,7 +145,48 @@ async function(e){
         "Gagal mengirim RSVP.";
 
     }
+/* FOTO MEMPELAI BERGANTI */
 
+const bridePhotos = [
+"images/siwi.jpg",
+"images/siwi2.jpg",
+"images/siwi3.jpg"
+];
+
+const groomPhotos = [
+"images/satriya.jpg",
+"images/satriya2.jpg",
+"images/satriya3.jpg"
+];
+
+let brideIndex = 0;
+let groomIndex = 0;
+
+setInterval(() => {
+
+brideIndex++;
+
+if(brideIndex >= bridePhotos.length){
+brideIndex = 0;
+}
+
+document.getElementById("bridePhoto").src =
+bridePhotos[brideIndex];
+
+},4000);
+
+setInterval(() => {
+
+groomIndex++;
+
+if(groomIndex >= groomPhotos.length){
+groomIndex = 0;
+}
+
+document.getElementById("groomPhoto").src =
+groomPhotos[groomIndex];
+
+},4500);
 });
 
 }
