@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>The Wedding Of Siwi & Satriya</title>
 
 <link rel="stylesheet" href="style.css">
-</head>
 
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+</head>
 <body>
 
-<!-- AUDIO -->
+<!-- MUSIC -->
 <audio id="music" loop>
     <source src="music/Canon in D.mp3" type="audio/mpeg">
 </audio>
@@ -19,13 +22,13 @@
 <!-- COVER -->
 <section id="cover" class="cover">
 
-    <img src="images/cover.jpg" class="cover-bg" alt="Cover">
+    <img src="images/cover.jpg" class="cover-bg">
 
     <div class="cover-overlay"></div>
 
     <div class="cover-content">
 
-        <p class="cover-subtitle">
+        <p class="small-text">
             THE WEDDING OF
         </p>
 
@@ -38,11 +41,13 @@
         </p>
 
         <div class="guest-box">
-            <small>Kepada Yth.</small>
+
+            <span>Kepada Yth.</span>
 
             <h3 id="guest">
                 Tamu Undangan
             </h3>
+
         </div>
 
         <button id="openInvitation" class="btn-open">
@@ -53,20 +58,23 @@
 
 </section>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <main id="mainContent">
 
-<!-- OPENING -->
-<section id="opening" class="section fade-section">
+<!-- HERO -->
+<section class="hero-section reveal">
 
-    <img src="images/couple-main.jpg"
-         class="opening-photo"
-         alt="Couple">
+    <div class="hero-image">
 
-    <div class="opening-text">
+        <img id="heroSlider"
+             src="images/couple-main.jpg">
 
-        <p class="section-label">
-            THE WEDDING OF
+    </div>
+
+    <div class="hero-text">
+
+        <p class="mini-title">
+            WE ARE GETTING MARRIED
         </p>
 
         <h2>
@@ -84,23 +92,25 @@
 
 </section>
 
-<!-- AYAT -->
-<section class="section fade-section">
+<!-- VERSE -->
+<section class="section reveal">
 
-    <div class="verse-card">
+    <div class="container">
 
-        <h3>
+        <h2 class="section-title">
             Firman Tuhan
-        </h3>
+        </h2>
 
-        <p class="verse-text">
-            "Sehati sepikirlah kamu, dan hiduplah
-            dalam damai sejahtera; maka Allah,
-            sumber kasih dan damai sejahtera
+        <blockquote>
+
+            "Sehati sepikirlah kamu,
+            dan hiduplah dalam damai sejahtera;
+            maka Allah, sumber kasih dan damai sejahtera
             akan menyertai kamu."
-        </p>
 
-        <span>
+        </blockquote>
+
+        <span class="verse-ref">
             2 Korintus 13:11b
         </span>
 
@@ -109,21 +119,15 @@
 </section>
 
 <!-- BRIDE -->
-<section id="couple" class="section fade-section">
+<section class="section reveal">
 
-    <div class="person-section">
+    <div class="container person-section">
 
-        <span class="section-label">
-            THE BRIDE
-        </span>
+        <img id="brideSlider"
+             class="person-image"
+             src="images/siwi.jpg">
 
-        <img
-            id="bridePhoto"
-            src="images/siwi.jpg"
-            class="person-photo"
-            alt="Siwi">
-
-        <h2>
+        <h2 class="person-name">
             Margareta Septa Prima Siwi
         </h2>
 
@@ -139,21 +143,15 @@
 </section>
 
 <!-- GROOM -->
-<section class="section fade-section">
+<section class="section reveal">
 
-    <div class="person-section">
+    <div class="container person-section">
 
-        <span class="section-label">
-            THE GROOM
-        </span>
+        <img id="groomSlider"
+             class="person-image"
+             src="images/satriya.jpg">
 
-        <img
-            id="groomPhoto"
-            src="images/satriya.jpg"
-            class="person-photo"
-            alt="Satriya">
-
-        <h2>
+        <h2 class="person-name">
             Ignatius Satriya Bagus Pradana
         </h2>
 
@@ -169,130 +167,117 @@
 </section>
 
 <!-- STORY -->
-<section id="story" class="section fade-section">
+<section class="section reveal">
 
-    <h2 class="section-title">
-        Our Story
-    </h2>
+    <div class="container">
 
-    <div class="timeline">
+        <h2 class="section-title">
+            Our Story
+        </h2>
 
-        <div class="timeline-item">
-            <h3>2016</h3>
-            <p>
-                Pertemuan pertama yang sederhana,
-                tanpa pernah menyangka akan menjadi
-                awal cerita kami.
-            </p>
-        </div>
+        <div class="timeline">
 
-        <div class="timeline-item">
-            <h3>2023</h3>
-            <p>
-                Sebuah percakapan membawa kami
-                untuk saling mengenal lebih dekat.
-            </p>
-        </div>
+            <div class="timeline-item">
+                <span>2016</span>
+                <h3>Pertemuan Pertama</h3>
+                <p>Awal dari sebuah cerita sederhana.</p>
+            </div>
 
-        <div class="timeline-item">
-            <h3>2024</h3>
-            <p>
-                Kami memutuskan untuk berjalan
-                bersama dan membangun hubungan.
-            </p>
-        </div>
+            <div class="timeline-item">
+                <span>2023</span>
+                <h3>Mulai Mengenal</h3>
+                <p>Kami mulai saling mengenal lebih dekat.</p>
+            </div>
 
-        <div class="timeline-item">
-            <h3>2025</h3>
-            <p>
-                Pertemuan dua keluarga menjadi
-                langkah menuju masa depan.
-            </p>
-        </div>
+            <div class="timeline-item">
+                <span>2024</span>
+                <h3>Menjadi Kita</h3>
+                <p>Kami memutuskan berjalan bersama.</p>
+            </div>
 
-        <div class="timeline-item">
-            <h3>2026</h3>
-            <p>
-                Forever Begins.
-                Kami memilih untuk berjalan
-                bersama selamanya.
-            </p>
+            <div class="timeline-item">
+                <span>2025</span>
+                <h3>Komitmen</h3>
+                <p>Dua keluarga dipertemukan.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span>2026</span>
+                <h3>Forever Begins</h3>
+                <p>Perjalanan hidup bersama dimulai.</p>
+            </div>
+
         </div>
 
     </div>
 
 </section>
 
-<!-- SAVE THE DATE -->
-<section id="date" class="section fade-section">
+<!-- COUNTDOWN -->
+<section class="section reveal">
 
-    <h2 class="section-title">
-        Save The Date
-    </h2>
+    <div class="container">
 
-    <p class="save-date">
-        Senin, 28 Desember 2026
-    </p>
+        <h2 class="section-title">
+            Save The Date
+        </h2>
 
-    <div class="countdown">
+        <p class="event-date">
+            Senin, 28 Desember 2026
+        </p>
 
-        <div class="count-box">
-            <span id="days">0</span>
-            <small>Hari</small>
-        </div>
+        <div class="countdown">
 
-        <div class="count-box">
-            <span id="hours">0</span>
-            <small>Jam</small>
-        </div>
+            <div class="count-box">
+                <span id="days">0</span>
+                <small>Hari</small>
+            </div>
 
-        <div class="count-box">
-            <span id="minutes">0</span>
-            <small>Menit</small>
-        </div>
+            <div class="count-box">
+                <span id="hours">0</span>
+                <small>Jam</small>
+            </div>
 
-        <div class="count-box">
-            <span id="seconds">0</span>
-            <small>Detik</small>
+            <div class="count-box">
+                <span id="minutes">0</span>
+                <small>Menit</small>
+            </div>
+
+            <div class="count-box">
+                <span id="seconds">0</span>
+                <small>Detik</small>
+            </div>
+
         </div>
 
     </div>
 
 </section>
 
-<!-- ACARA & LOKASI -->
-<section id="event" class="section fade-section">
+<!-- EVENT -->
+<section class="section reveal">
 
-    <h2 class="section-title">
-        Acara & Lokasi
-    </h2>
+    <div class="container">
 
-    <div class="event-grid">
+        <h2 class="section-title">
+            Wedding Event
+        </h2>
 
         <div class="event-card">
 
-            <h3>
-                ⛪ Pemberkatan
-            </h3>
+            <h3>Pemberkatan</h3>
 
-            <p>
-                Senin, 28 Desember 2026
-            </p>
+            <p>28 Desember 2026</p>
 
-            <p>
-                10.00 WIB
-            </p>
+            <p>10.00 WIB</p>
 
-            <p>
-                Gereja Santo Yusup Ambarawa
-            </p>
+            <p>Gereja Santo Yusup Ambarawa</p>
 
-            <a
-                href="https://maps.app.goo.gl/U81na6AeB3EjdWkW8"
-                target="_blank"
-                class="btn-map">
+            <a target="_blank"
+               href="https://maps.app.goo.gl/U81na6AeB3EjdWkW8"
+               class="btn-map">
 
-                Lihat Lokasi
+                Google Maps
 
             </a>
 
@@ -300,29 +285,19 @@
 
         <div class="event-card">
 
-            <h3>
-                🥂 Resepsi
-            </h3>
+            <h3>Resepsi</h3>
 
-            <p>
-                Senin, 28 Desember 2026
-            </p>
+            <p>28 Desember 2026</p>
 
-            <p>
-                13.00 WIB
-            </p>
+            <p>13.00 WIB</p>
 
-            <p>
-                Jl. Gunung Payung I No.49A,
-                Salatiga
-            </p>
+            <p>Jl. Gunung Payung I No.49A, Salatiga</p>
 
-            <a
-                href="https://maps.app.goo.gl/JUQCiiuyQV8SfxQRA"
-                target="_blank"
-                class="btn-map">
+            <a target="_blank"
+               href="https://maps.app.goo.gl/JUQCiiuyQV8SfxQRA"
+               class="btn-map">
 
-                Lihat Lokasi
+                Google Maps
 
             </a>
 
@@ -332,96 +307,116 @@
 
 </section>
 
-<!-- GALERI -->
-<section id="gallery" class="section fade-section">
+<!-- GALLERY -->
+<section class="section reveal">
 
-    <h2 class="section-title">
-        Galeri
-    </h2>
+    <div class="container">
 
-    <div class="gallery">
+        <h2 class="section-title">
+            Gallery
+        </h2>
 
-        <img src="images/photo1.jpg" alt="">
-        <img src="images/photo2.jpg" alt="">
-        <img src="images/photo3.jpg" alt="">
-        <img src="images/photo4.jpg" alt="">
-        <img src="images/photo5.jpg" alt="">
-        <img src="images/photo6.jpg" alt="">
+        <div class="gallery-grid">
+
+            <img src="images/photo1.jpg">
+            <img src="images/photo2.jpg">
+            <img src="images/photo3.jpg">
+            <img src="images/photo4.jpg">
+            <img src="images/photo5.jpg">
+            <img src="images/photo6.jpg">
+
+        </div>
 
     </div>
 
 </section>
 
 <!-- RSVP -->
-<section id="rsvp" class="section fade-section">
+<section class="section reveal">
 
-    <h2 class="section-title">
-        RSVP
-    </h2>
+    <div class="container">
 
-    <form id="rsvpForm" class="rsvp-form">
+        <h2 class="section-title">
+            RSVP
+        </h2>
 
-        <input
-            type="text"
-            id="nama"
-            placeholder="Nama"
-            required>
+        <form id="rsvpForm">
 
-        <select id="kehadiran" required>
-            <option value="">
-                Konfirmasi Kehadiran
-            </option>
+            <input type="text"
+                   id="nama"
+                   placeholder="Nama"
+                   required>
 
-            <option value="Hadir">
-                Hadir
-            </option>
+            <select id="kehadiran">
 
-            <option value="Tidak Hadir">
-                Tidak Hadir
-            </option>
-        </select>
+                <option value="">
+                    Konfirmasi Kehadiran
+                </option>
 
-        <input
-            type="number"
-            id="jumlah"
-            value="1"
-            min="1">
+                <option value="Hadir">
+                    Hadir
+                </option>
 
-        <textarea
-            id="ucapan"
-            rows="5"
-            placeholder="Ucapan & Doa"></textarea>
+                <option value="Tidak Hadir">
+                    Tidak Hadir
+                </option>
 
-        <button type="submit">
-            Kirim RSVP
-        </button>
+            </select>
 
-    </form>
+            <input type="number"
+                   id="jumlah"
+                   value="1"
+                   min="1">
 
-    <p id="statusRsvp"></p>
+            <textarea
+                id="ucapan"
+                rows="5"
+                placeholder="Ucapan & Doa">
+            </textarea>
 
-    <div id="wishList"
-         class="wish-list">
+            <button type="submit">
+                Kirim RSVP
+            </button>
+
+        </form>
+
+        <p id="statusRsvp"></p>
+
     </div>
 
 </section>
 
-<!-- TANDA KASIH -->
-<section id="gift" class="section fade-section">
+<!-- WISHES -->
+<section class="section reveal">
 
-    <h2 class="section-title">
-        Tanda Kasih
-    </h2>
+    <div class="container">
 
-    <div class="event-grid">
+        <h2 class="section-title">
+            Wedding Wishes
+        </h2>
 
-        <div class="event-card">
+        <div id="wishList">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- GIFT -->
+<section class="section reveal">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Wedding Gift
+        </h2>
+
+        <div class="gift-card">
 
             <h3>BCA</h3>
 
-            <p>
-                0131366158
-            </p>
+            <p>0131366158</p>
 
             <p>
                 a.n. Margareta Septa Prima Siwi
@@ -429,13 +424,11 @@
 
         </div>
 
-        <div class="event-card">
+        <div class="gift-card">
 
             <h3>BCA</h3>
 
-            <p>
-                3200875965
-            </p>
+            <p>3200875965</p>
 
             <p>
                 a.n. Ignatius Satriya Bagus Pradana
@@ -448,40 +441,41 @@
 </section>
 
 <!-- CLOSING -->
-<section class="section closing fade-section">
+<section class="section closing reveal">
 
-    <h2>
-        Terima Kasih
-    </h2>
+    <div class="container">
 
-    <p>
-        Merupakan suatu kehormatan dan
-        kebahagiaan bagi kami apabila
-        Bapak/Ibu/Saudara/i berkenan hadir
-        serta memberikan doa restu.
-    </p>
+        <h2>
+            Thank You
+        </h2>
 
-    <h3>
-        Siwi & Satriya
-    </h3>
+        <p>
+
+            Merupakan suatu kehormatan
+            dan kebahagiaan bagi kami
+            apabila Bapak/Ibu/Saudara/i
+            berkenan hadir serta
+            memberikan doa restu.
+
+        </p>
+
+        <h3>
+            Siwi & Satriya
+        </h3>
+
+    </div>
 
 </section>
 
 </main>
 
-<!-- BOTTOM NAV -->
+<!-- NAVIGATION -->
 <nav class="bottom-nav">
 
-    <a href="#opening">Home</a>
-
-    <a href="#couple">Mempelai</a>
-
+    <a href="#mainContent">Home</a>
     <a href="#story">Story</a>
-
     <a href="#event">Acara</a>
-
     <a href="#gallery">Galeri</a>
-
     <a href="#rsvp">RSVP</a>
 
 </nav>
